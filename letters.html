@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>For You 💌</title>
 
     <style>
@@ -12,6 +13,7 @@
         body {
             margin: 0;
             min-height: 100vh;
+
             font-family: Arial, sans-serif;
 
             background-image: url("Arii.gif");
@@ -20,6 +22,7 @@
             background-repeat: no-repeat;
 
             color: #5a3d52;
+
             overflow: hidden;
         }
 
@@ -30,29 +33,41 @@
 
         .deco {
             position: fixed;
+
             pointer-events: none;
+
             z-index: 1;
+
             object-fit: contain;
         }
 
+
         .deco1 {
             width: 85px;
-            top: 8%;
+
+            top: 7%;
             left: 2%;
+
             transform: rotate(-12deg);
         }
 
+
         .deco2 {
             width: 75px;
-            top: 12%;
+
+            top: 10%;
             right: 3%;
+
             transform: rotate(10deg);
         }
 
+
         .deco3 {
             width: 90px;
+
             bottom: 3%;
             left: 3%;
+
             transform: rotate(-8deg);
         }
 
@@ -62,18 +77,26 @@
         ========================= */
 
         h1 {
+
             position: absolute;
-            top: 6%;
+
+            top: 4%;
             left: 50%;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             font-size: 48px;
+
             white-space: nowrap;
 
             z-index: 5;
 
             color: #f7a8c4;
+
+            text-shadow:
+                0 3px 10px
+                rgba(90, 40, 70, 0.25);
         }
 
 
@@ -82,35 +105,47 @@
         ========================= */
 
         .envelope {
+
             position: absolute;
 
-            width: 220px;
+            width: 250px;
+            height: 165px;
+
+            background-color: white;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 14px 30px
+                rgba(0, 0, 0, 0.20);
 
             cursor: pointer;
-
-            z-index: 4;
 
             transition:
                 transform 0.3s ease,
                 opacity 0.3s ease;
+
+            background-image:
+                url("1envelope.png");
+
+            background-size:
+                100% 100%;
+
+            background-position:
+                center;
+
+            background-repeat:
+                no-repeat;
+
+            z-index: 4;
         }
 
-        .envelope-image {
-            display: block;
-
-            width: 100%;
-            height: auto;
-
-            pointer-events: none;
-
-            filter:
-                drop-shadow(
-                    0 12px 25px rgba(0, 0, 0, 0.18)
-                );
-        }
 
         .envelope:hover {
-            transform: scale(1.08) rotate(2deg);
+
+            transform:
+                scale(1.06)
+                rotate(2deg);
         }
 
 
@@ -119,21 +154,41 @@
         ========================= */
 
         .envelope.opening {
-            animation: envelopeOpen 0.65s ease forwards;
+
+            animation:
+                envelopeOpen
+                0.65s
+                ease
+                forwards;
         }
+
 
         @keyframes envelopeOpen {
 
             0% {
-                transform: scale(1) rotate(0deg);
+
+                transform:
+                    scale(1)
+                    rotate(0deg);
+
+                opacity: 1;
             }
 
             35% {
-                transform: scale(1.12) rotate(-2deg);
+
+                transform:
+                    scale(1.08)
+                    rotate(-2deg);
+
+                opacity: 1;
             }
 
             100% {
-                transform: scale(0.92) rotate(0deg);
+
+                transform:
+                    scale(0.92)
+                    rotate(0deg);
+
                 opacity: 0.35;
             }
         }
@@ -144,21 +199,62 @@
         ========================= */
 
         .heart {
+
             position: absolute;
 
             left: 50%;
-            top: 48%;
+            top: 50%;
 
             transform:
                 translate(-50%, -50%);
 
-            font-size: 38px;
+            font-size: 40px;
 
-            z-index: 2;
+            z-index: 5;
 
             color: #d85d91;
 
-            pointer-events: none;
+            text-shadow:
+                0 2px 5px
+                rgba(0,0,0,0.12);
+        }
+
+
+        /* =========================
+           NUMBERS
+        ========================= */
+
+        .number {
+
+            position: absolute;
+
+            top: -18px;
+            left: -18px;
+
+            width: 45px;
+            height: 45px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            color: #d85d91;
+
+            box-shadow:
+                0 6px 14px
+                rgba(0,0,0,0.18);
+
+            z-index: 10;
         }
 
 
@@ -166,22 +262,38 @@
            LETTER POSITIONS
         ========================= */
 
-        .letter-one {
-            top: 27%;
-            left: 7%;
+        /* 1 */
 
-            transform: rotate(-7deg);
+        .letter-one {
+
+            top: 25%;
+
+            left: 6%;
+
+            transform:
+                rotate(-6deg);
         }
+
+
+        /* 2 */
 
         .letter-two {
-            top: 27%;
-            right: 7%;
 
-            transform: rotate(7deg);
+            top: 25%;
+
+            right: 6%;
+
+            transform:
+                rotate(6deg);
         }
 
+
+        /* 5 */
+
         .letter-five {
-            top: 45%;
+
+            top: 48%;
+
             left: 50%;
 
             transform:
@@ -191,54 +303,30 @@
             z-index: 5;
         }
 
-        .letter-three {
-            bottom: 7%;
-            left: 7%;
 
-            transform: rotate(7deg);
+        /* 3 */
+
+        .letter-three {
+
+            bottom: 6%;
+
+            left: 6%;
+
+            transform:
+                rotate(6deg);
         }
+
+
+        /* 4 */
 
         .letter-four {
-            bottom: 7%;
-            right: 7%;
 
-            transform: rotate(-7deg);
-        }
+            bottom: 6%;
 
+            right: 6%;
 
-        /* =========================
-           NUMBERS
-        ========================= */
-
-        .number {
-            position: absolute;
-
-            top: -20px;
-            left: -16px;
-
-            width: 42px;
-            height: 42px;
-
-            background: white;
-
-            border-radius: 50%;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            font-size: 20px;
-            font-weight: bold;
-
-            color: #d85d91;
-
-            box-shadow:
-                0 5px 12px rgba(0,0,0,0.15);
-
-            z-index: 10;
-
-            pointer-events: none;
+            transform:
+                rotate(-6deg);
         }
 
 
@@ -248,84 +336,209 @@
 
         @media (max-width: 600px) {
 
+
             body {
+
                 overflow: hidden;
             }
 
+
             h1 {
-                font-size: 36px;
-                top: 5%;
+
+                font-size: 34px;
+
+                top: 4%;
             }
+
 
             .envelope {
+
                 width: 155px;
+
+                height: 105px;
             }
+
 
             .heart {
-                font-size: 28px;
+
+                font-size: 29px;
             }
 
-            .letter-one {
-                top: 21%;
-                left: 5%;
-            }
-
-            .letter-two {
-                top: 21%;
-                right: 5%;
-            }
-
-            .letter-five {
-                top: 43%;
-            }
-
-            .letter-three {
-                bottom: 6%;
-                left: 5%;
-            }
-
-            .letter-four {
-                bottom: 6%;
-                right: 5%;
-            }
 
             .number {
+
                 width: 34px;
                 height: 34px;
 
-                font-size: 16px;
-
-                top: -17px;
+                top: -14px;
                 left: -13px;
+
+                font-size: 16px;
             }
 
+
+            /* 1 */
+
+            .letter-one {
+
+                top: 20%;
+
+                left: 4%;
+            }
+
+
+            /* 2 */
+
+            .letter-two {
+
+                top: 20%;
+
+                right: 4%;
+            }
+
+
+            /* 5 */
+
+            .letter-five {
+
+                top: 43%;
+
+                left: 50%;
+            }
+
+
+            /* 3 */
+
+            .letter-three {
+
+                bottom: 6%;
+
+                left: 4%;
+            }
+
+
+            /* 4 */
+
+            .letter-four {
+
+                bottom: 6%;
+
+                right: 4%;
+            }
+
+
+            /* DECORATIONS */
+
             .deco1 {
-                width: 55px;
-                top: 9%;
+
+                width: 52px;
+
+                top: 8%;
+
                 left: 1%;
             }
 
+
             .deco2 {
-                width: 50px;
-                top: 12%;
+
+                width: 48px;
+
+                top: 10%;
+
                 right: 1%;
             }
 
+
             .deco3 {
+
                 width: 55px;
+
                 bottom: 1%;
+
                 left: 1%;
             }
+
+        }
+
+
+        /* =========================
+           VERY SMALL PHONES
+        ========================= */
+
+        @media (max-width: 420px) {
+
+
+            h1 {
+
+                font-size: 29px;
+            }
+
+
+            .envelope {
+
+                width: 140px;
+
+                height: 95px;
+            }
+
+
+            .heart {
+
+                font-size: 26px;
+            }
+
+
+            .letter-one {
+
+                left: 3%;
+
+                top: 20%;
+            }
+
+
+            .letter-two {
+
+                right: 3%;
+
+                top: 20%;
+            }
+
+
+            .letter-five {
+
+                top: 43%;
+            }
+
+
+            .letter-three {
+
+                left: 3%;
+
+                bottom: 6%;
+            }
+
+
+            .letter-four {
+
+                right: 3%;
+
+                bottom: 6%;
+            }
+
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-    <!-- DECORATIONS -->
+    <!-- =========================
+         DECORATIONS
+    ========================= -->
+
 
     <img
         class="deco deco1"
@@ -333,11 +546,13 @@
         alt=""
     >
 
+
     <img
         class="deco deco2"
         src="sparklespink.png"
         alt=""
     >
+
 
     <img
         class="deco deco3"
@@ -346,107 +561,131 @@
     >
 
 
-    <h1>For You 💌</h1>
+
+    <!-- =========================
+         TITLE
+    ========================= -->
 
 
-    <!-- LETTER 1 -->
+    <h1>
+        For You 💌
+    </h1>
+
+
+
+    <!-- =========================
+         LETTER 1
+    ========================= -->
+
 
     <div
         class="envelope letter-one"
         onclick="openEnvelope(this, 'letter1.html')"
     >
 
-        <img
-            class="envelope-image"
-            src="1envelope.png"
-            alt="Letter 1 envelope"
-        >
+        <div class="number">
+            1
+        </div>
 
-        <div class="number">1</div>
-
-        <div class="heart">♡</div>
+        <div class="heart">
+            ♡
+        </div>
 
     </div>
 
 
-    <!-- LETTER 2 -->
+
+    <!-- =========================
+         LETTER 2
+    ========================= -->
+
 
     <div
         class="envelope letter-two"
         onclick="openEnvelope(this, 'letter2.html')"
     >
 
-        <img
-            class="envelope-image"
-            src="1envelope.png"
-            alt="Letter 2 envelope"
-        >
+        <div class="number">
+            2
+        </div>
 
-        <div class="number">2</div>
-
-        <div class="heart">♡</div>
+        <div class="heart">
+            ♡
+        </div>
 
     </div>
 
 
-    <!-- LETTER 5 -->
+
+    <!-- =========================
+         LETTER 5
+    ========================= -->
+
 
     <div
         class="envelope letter-five"
         onclick="openEnvelope(this, 'letter5.html')"
     >
 
-        <img
-            class="envelope-image"
-            src="1envelope.png"
-            alt="Letter 5 envelope"
-        >
+        <div class="number">
+            5
+        </div>
 
-        <div class="number">5</div>
-
-        <div class="heart">♡</div>
+        <div class="heart">
+            ♡
+        </div>
 
     </div>
 
 
-    <!-- LETTER 3 -->
+
+    <!-- =========================
+         LETTER 3
+    ========================= -->
+
 
     <div
         class="envelope letter-three"
         onclick="openEnvelope(this, 'letter3.html')"
     >
 
-        <img
-            class="envelope-image"
-            src="1envelope.png"
-            alt="Letter 3 envelope"
-        >
+        <div class="number">
+            3
+        </div>
 
-        <div class="number">3</div>
-
-        <div class="heart">♡</div>
+        <div class="heart">
+            ♡
+        </div>
 
     </div>
 
 
-    <!-- LETTER 4 -->
+
+    <!-- =========================
+         LETTER 4
+    ========================= -->
+
 
     <div
         class="envelope letter-four"
         onclick="openEnvelope(this, 'letter4.html')"
     >
 
-        <img
-            class="envelope-image"
-            src="1envelope.png"
-            alt="Letter 4 envelope"
-        >
+        <div class="number">
+            4
+        </div>
 
-        <div class="number">4</div>
-
-        <div class="heart">♡</div>
+        <div class="heart">
+            ♡
+        </div>
 
     </div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
 
     <script>
@@ -454,6 +693,7 @@
         function openEnvelope(envelope, page) {
 
             envelope.classList.add("opening");
+
 
             setTimeout(function() {
 
@@ -467,4 +707,5 @@
 
 
 </body>
+
 </html>
