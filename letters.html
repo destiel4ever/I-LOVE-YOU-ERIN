@@ -44,7 +44,6 @@
 
         .deco1 {
             width: 85px;
-
             top: 7%;
             left: 2%;
 
@@ -54,7 +53,6 @@
 
         .deco2 {
             width: 75px;
-
             top: 10%;
             right: 3%;
 
@@ -64,7 +62,6 @@
 
         .deco3 {
             width: 90px;
-
             bottom: 3%;
             left: 3%;
 
@@ -77,14 +74,12 @@
         ========================= */
 
         h1 {
-
             position: absolute;
 
             top: 4%;
             left: 50%;
 
-            transform:
-                translateX(-50%);
+            transform: translateX(-50%);
 
             font-size: 48px;
 
@@ -105,19 +100,14 @@
         ========================= */
 
         .envelope {
-
             position: absolute;
 
             width: 250px;
-            height: 165px;
+            height: 167px;
 
-            background-color: white;
+            background-color: transparent;
 
             border-radius: 14px;
-
-            box-shadow:
-                0 14px 30px
-                rgba(0, 0, 0, 0.20);
 
             cursor: pointer;
 
@@ -128,21 +118,17 @@
             background-image:
                 url("1envelope.png");
 
-            background-size:
-                100% 100%;
+            background-size: contain;
 
-            background-position:
-                center;
+            background-position: center;
 
-            background-repeat:
-                no-repeat;
+            background-repeat: no-repeat;
 
             z-index: 4;
         }
 
 
         .envelope:hover {
-
             transform:
                 scale(1.06)
                 rotate(2deg);
@@ -154,7 +140,6 @@
         ========================= */
 
         .envelope.opening {
-
             animation:
                 envelopeOpen
                 0.65s
@@ -166,7 +151,6 @@
         @keyframes envelopeOpen {
 
             0% {
-
                 transform:
                     scale(1)
                     rotate(0deg);
@@ -175,7 +159,6 @@
             }
 
             35% {
-
                 transform:
                     scale(1.08)
                     rotate(-2deg);
@@ -184,7 +167,6 @@
             }
 
             100% {
-
                 transform:
                     scale(0.92)
                     rotate(0deg);
@@ -199,7 +181,6 @@
         ========================= */
 
         .heart {
-
             position: absolute;
 
             left: 50%;
@@ -225,7 +206,6 @@
         ========================= */
 
         .number {
-
             position: absolute;
 
             top: -18px;
@@ -241,7 +221,6 @@
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
             font-size: 21px;
@@ -262,38 +241,26 @@
            LETTER POSITIONS
         ========================= */
 
-        /* 1 */
-
         .letter-one {
-
-            top: 25%;
-
-            left: 6%;
+            top: 24%;
+            left: 5%;
 
             transform:
                 rotate(-6deg);
         }
 
 
-        /* 2 */
-
         .letter-two {
-
-            top: 25%;
-
-            right: 6%;
+            top: 24%;
+            right: 5%;
 
             transform:
                 rotate(6deg);
         }
 
 
-        /* 5 */
-
         .letter-five {
-
-            top: 48%;
-
+            top: 47%;
             left: 50%;
 
             transform:
@@ -304,26 +271,18 @@
         }
 
 
-        /* 3 */
-
         .letter-three {
-
-            bottom: 6%;
-
-            left: 6%;
+            bottom: 5%;
+            left: 5%;
 
             transform:
                 rotate(6deg);
         }
 
 
-        /* 4 */
-
         .letter-four {
-
-            bottom: 6%;
-
-            right: 6%;
+            bottom: 5%;
+            right: 5%;
 
             transform:
                 rotate(-6deg);
@@ -336,37 +295,29 @@
 
         @media (max-width: 600px) {
 
-
             body {
-
                 overflow: hidden;
             }
 
 
             h1 {
-
                 font-size: 34px;
-
                 top: 4%;
             }
 
 
             .envelope {
-
-                width: 155px;
-
-                height: 105px;
+                width: 170px;
+                height: 114px;
             }
 
 
             .heart {
-
                 font-size: 29px;
             }
 
 
             .number {
-
                 width: 34px;
                 height: 34px;
 
@@ -377,84 +328,53 @@
             }
 
 
-            /* 1 */
-
             .letter-one {
-
-                top: 20%;
-
-                left: 4%;
+                top: 19%;
+                left: 3%;
             }
 
-
-            /* 2 */
 
             .letter-two {
-
-                top: 20%;
-
-                right: 4%;
+                top: 19%;
+                right: 3%;
             }
 
 
-            /* 5 */
-
             .letter-five {
-
                 top: 43%;
-
                 left: 50%;
             }
 
 
-            /* 3 */
-
             .letter-three {
-
-                bottom: 6%;
-
-                left: 4%;
+                bottom: 7%;
+                left: 3%;
             }
 
-
-            /* 4 */
 
             .letter-four {
-
-                bottom: 6%;
-
-                right: 4%;
+                bottom: 7%;
+                right: 3%;
             }
 
 
-            /* DECORATIONS */
-
             .deco1 {
-
                 width: 52px;
-
                 top: 8%;
-
                 left: 1%;
             }
 
 
             .deco2 {
-
                 width: 48px;
-
                 top: 10%;
-
                 right: 1%;
             }
 
 
             .deco3 {
-
                 width: 55px;
-
                 bottom: 1%;
-
                 left: 1%;
             }
 
@@ -467,62 +387,48 @@
 
         @media (max-width: 420px) {
 
-
             h1 {
-
                 font-size: 29px;
             }
 
 
             .envelope {
-
-                width: 140px;
-
-                height: 95px;
+                width: 155px;
+                height: 104px;
             }
 
 
             .heart {
-
                 font-size: 26px;
             }
 
 
             .letter-one {
-
-                left: 3%;
-
-                top: 20%;
+                left: 2%;
+                top: 19%;
             }
 
 
             .letter-two {
-
-                right: 3%;
-
-                top: 20%;
+                right: 2%;
+                top: 19%;
             }
 
 
             .letter-five {
-
                 top: 43%;
             }
 
 
             .letter-three {
-
-                left: 3%;
-
-                bottom: 6%;
+                left: 2%;
+                bottom: 7%;
             }
 
 
             .letter-four {
-
-                right: 3%;
-
-                bottom: 6%;
+                right: 2%;
+                bottom: 7%;
             }
 
         }
@@ -538,7 +444,6 @@
     <!-- =========================
          DECORATIONS
     ========================= -->
-
 
     <img
         class="deco deco1"
@@ -566,7 +471,6 @@
          TITLE
     ========================= -->
 
-
     <h1>
         For You 💌
     </h1>
@@ -576,7 +480,6 @@
     <!-- =========================
          LETTER 1
     ========================= -->
-
 
     <div
         class="envelope letter-one"
@@ -599,7 +502,6 @@
          LETTER 2
     ========================= -->
 
-
     <div
         class="envelope letter-two"
         onclick="openEnvelope(this, 'letter2.html')"
@@ -620,7 +522,6 @@
     <!-- =========================
          LETTER 5
     ========================= -->
-
 
     <div
         class="envelope letter-five"
@@ -643,7 +544,6 @@
          LETTER 3
     ========================= -->
 
-
     <div
         class="envelope letter-three"
         onclick="openEnvelope(this, 'letter3.html')"
@@ -664,7 +564,6 @@
     <!-- =========================
          LETTER 4
     ========================= -->
-
 
     <div
         class="envelope letter-four"
@@ -687,13 +586,11 @@
          JAVASCRIPT
     ========================= -->
 
-
     <script>
 
         function openEnvelope(envelope, page) {
 
             envelope.classList.add("opening");
-
 
             setTimeout(function() {
 
