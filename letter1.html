@@ -4,6 +4,7 @@
     <title>A Little Something For You 💗</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -15,6 +16,40 @@
             color: #5a3d52;
         }
 
+
+        /* =========================
+           DECORATIONS
+        ========================= */
+
+        .page-deco {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            object-fit: contain;
+        }
+
+        .deco-left {
+            width: 85px;
+            top: 8%;
+            left: 2%;
+            transform: rotate(-12deg);
+        }
+
+        .deco-right {
+            width: 80px;
+            top: 12%;
+            right: 2%;
+            transform: rotate(12deg);
+        }
+
+        .deco-bottom {
+            width: 95px;
+            bottom: 3%;
+            right: 3%;
+            transform: rotate(-8deg);
+        }
+
+
         /* =========================
            MAIN LETTER 1 PAGE
         ========================= */
@@ -23,13 +58,22 @@
             min-height: 100vh;
             padding: 60px 25px;
             text-align: center;
-            background: linear-gradient(135deg, #ffc1dc, #f7a8c4);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffc1dc,
+                    #f7a8c4
+                );
+
+            position: relative;
+            z-index: 0;
         }
 
         .main-page h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
-    color: white;
+            font-size: 42px;
+            margin-bottom: 10px;
+            color: white;
         }
 
         .intro {
@@ -43,6 +87,8 @@
             gap: 30px;
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 3;
         }
 
         .choice {
@@ -56,7 +102,8 @@
             justify-content: center;
             align-items: center;
 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.15);
 
             cursor: pointer;
 
@@ -66,11 +113,13 @@
         }
 
         .choice:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
+            transform:
+                translateY(-8px)
+                scale(1.03);
 
-        /* Cute non-emoji icons */
+            box-shadow:
+                0 15px 30px rgba(0,0,0,0.2);
+        }
 
         .choice .icon {
             font-size: 58px;
@@ -84,6 +133,7 @@
             margin: 0;
             line-height: 1.4;
         }
+
 
         /* =========================
            INDIVIDUAL LETTER PAGES
@@ -103,6 +153,8 @@
             background-repeat: no-repeat;
 
             background-attachment: fixed;
+
+            position: relative;
         }
 
         .letter-page.active {
@@ -115,6 +167,9 @@
             font-size: 38px;
             margin-bottom: 25px;
             color: #f7a8c4;
+
+            position: relative;
+            z-index: 3;
         }
 
         .letter-decoration {
@@ -125,7 +180,8 @@
         }
 
         .letter-card {
-            background: rgba(255, 255, 255, 0.91);
+            background:
+                rgba(255, 255, 255, 0.91);
 
             width: 90%;
             max-width: 650px;
@@ -141,6 +197,9 @@
             line-height: 1.7;
 
             text-align: left;
+
+            position: relative;
+            z-index: 3;
         }
 
         .letter-card p {
@@ -162,20 +221,27 @@
 
             cursor: pointer;
 
-            box-shadow: 0 7px 18px rgba(0,0,0,0.15);
+            box-shadow:
+                0 7px 18px rgba(0,0,0,0.15);
 
             transition:
                 transform 0.2s ease,
                 box-shadow 0.2s ease;
+
+            position: relative;
+            z-index: 3;
         }
 
         .back-button:hover {
             transform: scale(1.06);
-            box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+
+            box-shadow:
+                0 10px 22px rgba(0,0,0,0.2);
         }
 
+
         /* =========================
-           PHONE SCREEN
+           PHONE
         ========================= */
 
         @media (max-width: 600px) {
@@ -210,17 +276,60 @@
                 padding: 25px;
                 font-size: 17px;
             }
+
+            .deco-left {
+                width: 55px;
+                top: 8%;
+                left: 1%;
+            }
+
+            .deco-right {
+                width: 55px;
+                top: 12%;
+                right: 1%;
+            }
+
+            .deco-bottom {
+                width: 65px;
+                bottom: 2%;
+                right: 1%;
+            }
         }
+
     </style>
 </head>
 
+
 <body>
+
 
     <!-- =========================
          MAIN LETTER 1 MENU
     ========================= -->
 
     <div class="main-page" id="mainPage">
+
+
+        <!-- DECORATIONS -->
+
+        <img
+            class="page-deco deco-left"
+            src="butterfly1.png"
+            alt=""
+        >
+
+        <img
+            class="page-deco deco-right"
+            src="sparkles.png"
+            alt=""
+        >
+
+        <img
+            class="page-deco deco-bottom"
+            src="flower.png"
+            alt=""
+        >
+
 
         <h1>A Little Something For You</h1>
 
@@ -275,9 +384,7 @@
     </div>
 
 
-    <!-- =========================
-         BAD DAY
-    ========================= -->
+    <!-- BAD DAY -->
 
     <div class="letter-page" id="badDay">
 
@@ -317,9 +424,7 @@
     </div>
 
 
-    <!-- =========================
-         NOBODY GETS ME
-    ========================= -->
+    <!-- NOBODY GETS ME -->
 
     <div class="letter-page" id="nobodyGetsMe">
 
@@ -363,9 +468,7 @@
     </div>
 
 
-    <!-- =========================
-         MOTIVATION
-    ========================= -->
+    <!-- MOTIVATION -->
 
     <div class="letter-page" id="motivation">
 
@@ -408,9 +511,7 @@
     </div>
 
 
-    <!-- =========================
-         MISS ME
-    ========================= -->
+    <!-- MISS ME -->
 
     <div class="letter-page" id="missMe">
 
@@ -459,10 +560,6 @@
 
     </div>
 
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
 
     <script>
 
