@@ -70,6 +70,7 @@
 
             font-size: 48px;
             white-space: nowrap;
+
             z-index: 5;
 
             color: #f7a8c4;
@@ -77,34 +78,35 @@
 
 
         /* =========================
-           ENVELOPE
+           ENVELOPES
         ========================= */
 
         .envelope {
             position: absolute;
 
             width: 220px;
-            height: 145px;
-
-            background: white;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 12px 25px rgba(0, 0, 0, 0.18);
 
             cursor: pointer;
+
+            z-index: 4;
 
             transition:
                 transform 0.3s ease,
                 opacity 0.3s ease;
+        }
 
-            background-image: url("1envelope.png");
-            background-size: 100% 100%;
-            background-position: center;
-            background-repeat: no-repeat;
+        .envelope-image {
+            display: block;
 
-            z-index: 4;
+            width: 100%;
+            height: auto;
+
+            pointer-events: none;
+
+            filter:
+                drop-shadow(
+                    0 12px 25px rgba(0, 0, 0, 0.18)
+                );
         }
 
         .envelope:hover {
@@ -112,7 +114,9 @@
         }
 
 
-        /* OPENING ANIMATION */
+        /* =========================
+           OPENING ANIMATION
+        ========================= */
 
         .envelope.opening {
             animation: envelopeOpen 0.65s ease forwards;
@@ -135,19 +139,26 @@
         }
 
 
+        /* =========================
+           HEART
+        ========================= */
+
         .heart {
             position: absolute;
 
             left: 50%;
             top: 48%;
 
-            transform: translate(-50%, -50%);
+            transform:
+                translate(-50%, -50%);
 
             font-size: 38px;
 
             z-index: 2;
 
             color: #d85d91;
+
+            pointer-events: none;
         }
 
 
@@ -173,7 +184,9 @@
             top: 45%;
             left: 50%;
 
-            transform: translateX(-50%) rotate(-2deg);
+            transform:
+                translateX(-50%)
+                rotate(-2deg);
 
             z-index: 5;
         }
@@ -211,6 +224,7 @@
             border-radius: 50%;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -223,6 +237,8 @@
                 0 5px 12px rgba(0,0,0,0.15);
 
             z-index: 10;
+
+            pointer-events: none;
         }
 
 
@@ -243,7 +259,6 @@
 
             .envelope {
                 width: 155px;
-                height: 105px;
             }
 
             .heart {
@@ -340,8 +355,17 @@
         class="envelope letter-one"
         onclick="openEnvelope(this, 'letter1.html')"
     >
+
+        <img
+            class="envelope-image"
+            src="1envelope.png"
+            alt="Letter 1 envelope"
+        >
+
         <div class="number">1</div>
+
         <div class="heart">♡</div>
+
     </div>
 
 
@@ -351,8 +375,17 @@
         class="envelope letter-two"
         onclick="openEnvelope(this, 'letter2.html')"
     >
+
+        <img
+            class="envelope-image"
+            src="1envelope.png"
+            alt="Letter 2 envelope"
+        >
+
         <div class="number">2</div>
+
         <div class="heart">♡</div>
+
     </div>
 
 
@@ -362,8 +395,17 @@
         class="envelope letter-five"
         onclick="openEnvelope(this, 'letter5.html')"
     >
+
+        <img
+            class="envelope-image"
+            src="1envelope.png"
+            alt="Letter 5 envelope"
+        >
+
         <div class="number">5</div>
+
         <div class="heart">♡</div>
+
     </div>
 
 
@@ -373,8 +415,17 @@
         class="envelope letter-three"
         onclick="openEnvelope(this, 'letter3.html')"
     >
+
+        <img
+            class="envelope-image"
+            src="1envelope.png"
+            alt="Letter 3 envelope"
+        >
+
         <div class="number">3</div>
+
         <div class="heart">♡</div>
+
     </div>
 
 
@@ -384,8 +435,17 @@
         class="envelope letter-four"
         onclick="openEnvelope(this, 'letter4.html')"
     >
+
+        <img
+            class="envelope-image"
+            src="1envelope.png"
+            alt="Letter 4 envelope"
+        >
+
         <div class="number">4</div>
+
         <div class="heart">♡</div>
+
     </div>
 
 
@@ -404,6 +464,7 @@
         }
 
     </script>
+
 
 </body>
 </html>
