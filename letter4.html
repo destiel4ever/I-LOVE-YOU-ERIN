@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Our Playlist 🎵</title>
+    <title>Music Break 🎵</title>
 
     <style>
 
@@ -55,6 +55,44 @@
 
             text-shadow:
                 0 2px 8px rgba(80, 30, 70, 0.5);
+        }
+
+        /* =========================
+           DECORATIONS
+        ========================= */
+
+        .deco {
+            position: fixed;
+
+            width: 70px;
+
+            z-index: 1;
+
+            pointer-events: none;
+
+            opacity: 0.9;
+
+            filter: drop-shadow(
+                0 5px 8px rgba(80, 30, 60, 0.15)
+            );
+        }
+
+        .deco1 {
+            top: 12%;
+            left: 4%;
+            transform: rotate(-12deg);
+        }
+
+        .deco2 {
+            top: 28%;
+            right: 5%;
+            transform: rotate(8deg);
+        }
+
+        .deco3 {
+            bottom: 15%;
+            left: 6%;
+            transform: rotate(10deg);
         }
 
         #playlist {
@@ -354,6 +392,10 @@
                 font-size: 12px;
             }
 
+            .deco {
+                width: 55px;
+            }
+
         }
 
         @media (max-width: 420px) {
@@ -371,6 +413,10 @@
                 font-size: 30px;
             }
 
+            .deco {
+                width: 45px;
+            }
+
         }
 
     </style>
@@ -379,327 +425,437 @@
 
 <body>
 
+    <!-- DECORATIONS -->
 
-<h1>Our Playlist 🎵</h1>
+    <img
+        class="deco deco1"
+        src="butterfly.png"
+        alt=""
+    >
 
-<div class="subtitle">
-    songs that remind me of you 💗
-</div>
+    <img
+        class="deco deco2"
+        src="sparklespink.png"
+        alt=""
+    >
+
+    <img
+        class="deco deco3"
+        src="flower.png"
+        alt=""
+    >
 
 
-<div id="playlist">
+    <h1>Our Playlist 🎵</h1>
+
+    <div class="subtitle">
+        songs that remind me of you 💗
+    </div>
 
 
-    <!-- SONG 1 -->
+    <div id="playlist">
 
-    <div class="song">
 
-        <div
-            class="record"
-            data-song="song1"
-        >
+        <!-- SONG 1 -->
 
-            <img
-                class="cover"
-                src="ALLIDIDWASDREAMOFYOU.jpg"
-                alt="All I Did Was Dream of You"
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song1"
             >
 
+                <img
+                    class="cover"
+                    src="ALLIDIDWASDREAMOFYOU.jpg"
+                    alt="All I Did Was Dream of You"
+                >
+
+            </div>
+
+            <div class="song-title">
+                All I Did Was Dream of You
+            </div>
+
+            <div class="artist">
+                beabadoobee
+            </div>
+
+            <audio
+                id="song1"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/beabadoobee_The_Mar_as_-_All_I_Did_Was_Dream_of_You_(mp3.pm).mp3"
+            ></audio>
+
         </div>
 
-        <div class="song-title">
-            All I Did Was Dream of You
+
+        <!-- SONG 2 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song2"
+            >
+
+                <img
+                    class="cover"
+                    src="7rings.jpg"
+                    alt="7 rings"
+                >
+
+            </div>
+
+            <div class="song-title">
+                7 rings
+            </div>
+
+            <div class="artist">
+                Ariana Grande
+            </div>
+
+            <audio
+                id="song2"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/Ariana_Grande_-_7_rings_(mp3.pm).mp3"
+            ></audio>
+
         </div>
 
-        <div class="artist">
-            beabadoobee
+
+        <!-- SONG 3 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song3"
+            >
+
+                <img
+                    class="cover"
+                    src="Theonlyexception.jpg"
+                    alt="The Only Exception"
+                >
+
+            </div>
+
+            <div class="song-title">
+                The Only Exception
+            </div>
+
+            <div class="artist">
+                Paramore
+            </div>
+
+            <audio
+                id="song3"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/Radio_ENERGY_-_PARAMORE_-_The_Only_Exception_(mp3.pm).mp3"
+            ></audio>
+
         </div>
 
-        <audio
-            id="song1"
-            src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/beabadoobee_The_Mar_as_-_All_I_Did_Was_Dream_of_You_(mp3.pm).mp3"
-        ></audio>
+
+        <!-- SONG 4 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song4"
+            >
+
+                <img
+                    class="cover"
+                    src="Ojostristes.jpg"
+                    alt="Ojos Tristes"
+                >
+
+            </div>
+
+            <div class="song-title">
+                Ojos Tristes
+            </div>
+
+            <div class="artist">
+                Selena Gomez, Benny Blanco & The Marías
+            </div>
+
+            <audio
+                id="song4"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/Selena_Gomez_Benny_Blanco_The_Marias_-_Ojos_Tristes_(mp3.pm).mp3"
+            ></audio>
+
+        </div>
+
+
+        <!-- SONG 5 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song5"
+            >
+
+                <img
+                    class="cover"
+                    src="Thankunext.jpg"
+                    alt="thank u, next"
+                >
+
+            </div>
+
+            <div class="song-title">
+                thank u, next
+            </div>
+
+            <div class="artist">
+                Ariana Grande
+            </div>
+
+            <audio
+                id="song5"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/thank_u_next_-_ariana_grande_(mp3.pm).mp3"
+            ></audio>
+
+        </div>
+
+
+        <!-- SONG 6 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song6"
+            >
+
+                <img
+                    class="cover"
+                    src="Noonenoticed.jpg"
+                    alt="No One Noticed"
+                >
+
+            </div>
+
+            <div class="song-title">
+                No One Noticed
+            </div>
+
+            <div class="artist">
+                The Marías
+            </div>
+
+            <audio
+                id="song6"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/The_Mar_as_-_No_One_Noticed_Extended_Spanish_(mp3.pm).mp3"
+            ></audio>
+
+        </div>
+
+
+        <!-- SONG 7 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song7"
+            >
+
+                <img
+                    class="cover"
+                    src="Earnedit.jpg"
+                    alt="Earned It"
+                >
+
+            </div>
+
+            <div class="song-title">
+                Earned It
+            </div>
+
+            <div class="artist">
+                The Weeknd
+            </div>
+
+            <audio
+                id="song7"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/The_Weeknd_-_Earned_(mp3.pm).mp3"
+            ></audio>
+
+        </div>
+
 
     </div>
 
 
-    <!-- SONG 2 -->
-
-    <div class="song">
-
-        <div
-            class="record"
-            data-song="song2"
-        >
-
-            <img
-                class="cover"
-                src="7rings.jpg"
-                alt="7 rings"
-            >
-
-        </div>
-
-        <div class="song-title">
-            7 rings
-        </div>
-
-        <div class="artist">
-            Ariana Grande
-        </div>
-
-        <audio
-            id="song2"
-            src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/Ariana_Grande_-_7_rings_(mp3.pm).mp3"
-        ></audio>
-
+    <div id="nowPlaying">
+        ♪ Nothing playing right now
     </div>
 
 
-    <!-- SONG 3 -->
+    <button
+        id="exit"
+        onclick="goBack()"
+    >
+        ← Exit Letter
+    </button>
 
-    <div class="song">
 
-        <div
-            class="record"
-            data-song="song3"
-        >
+    <script>
 
-            <img
-                class="cover"
-                src="Theonlyexception.jpg"
-                alt="The Only Exception"
-            >
+        const records =
+            document.querySelectorAll(".record");
 
-        </div>
+        const nowPlaying =
+            document.getElementById("nowPlaying");
 
-        <div class="song-title">
-            The Only Exception
-        </div>
+        let currentAudio = null;
 
-        <div class="artist">
-            Paramore
-        </div>
+        let currentRecord = null;
 
-        <audio
-            id="song3"
-            src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/Radio_ENERGY_-_PARAMORE_-_The_Only_Exception_(mp3.pm).mp3"
-        ></audio>
 
-    </div>
+        records.forEach(record => {
 
+            record.addEventListener(
+                "click",
+                function() {
 
-    <!-- SONG 4 -->
+                    const songID =
+                        this.getAttribute(
+                            "data-song"
+                        );
 
-    <div class="song">
+                    const audio =
+                        document.getElementById(
+                            songID
+                        );
 
-        <div
-            class="record"
-            data-song="song4"
-        >
 
-            <img
-                class="cover"
-                src="Ojostristes.jpg"
-                alt="Ojos Tristes"
-            >
+                    if (
+                        currentAudio === audio &&
+                        !audio.paused
+                    ) {
 
-        </div>
+                        audio.pause();
 
-        <div class="song-title">
-            Ojos Tristes
-        </div>
+                        this.classList.remove(
+                            "playing"
+                        );
 
-        <div class="artist">
-            Selena Gomez, Benny Blanco & The Marías
-        </div>
+                        nowPlaying.classList.remove(
+                            "show"
+                        );
 
-        <audio
-            id="song4"
-            src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/Selena_Gomez_Benny_Blanco_The_Marias_-_Ojos_Tristes_(mp3.pm).mp3"
-        ></audio>
+                        return;
+                    }
 
-    </div>
 
+                    if (currentAudio) {
 
-    <!-- SONG 5 -->
+                        currentAudio.pause();
 
-    <div class="song">
+                        currentAudio.currentTime = 0;
+                    }
 
-        <div
-            class="record"
-            data-song="song5"
-        >
+                    if (currentRecord) {
 
-            <img
-                class="cover"
-                src="Thankunext.jpg"
-                alt="thank u, next"
-            >
+                        currentRecord.classList.remove(
+                            "playing"
+                        );
 
-        </div>
+                    }
 
-        <div class="song-title">
-            thank u, next
-        </div>
 
-        <div class="artist">
-            Ariana Grande
-        </div>
+                    currentAudio = audio;
 
-        <audio
-            id="song5"
-            src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/thank_u_next_-_ariana_grande_(mp3.pm).mp3"
-        ></audio>
+                    currentRecord = this;
 
-    </div>
+                    audio.currentTime = 0;
 
 
-    <!-- SONG 6 -->
+                    audio.play()
+                        .then(() => {
 
-    <div class="song">
+                            this.classList.add(
+                                "playing"
+                            );
 
-        <div
-            class="record"
-            data-song="song6"
-        >
+                        })
+                        .catch(error => {
 
-            <img
-                class="cover"
-                src="Noonenoticed.jpg"
-                alt="No One Noticed"
-            >
+                            console.log(
+                                "Audio could not start:",
+                                error
+                            );
 
-        </div>
+                        });
 
-        <div class="song-title">
-            No One Noticed
-        </div>
 
-        <div class="artist">
-            The Marías
-        </div>
+                    const title =
+                        this.parentElement
+                            .querySelector(
+                                ".song-title"
+                            )
+                            .textContent;
 
-        <audio
-            id="song6"
-            src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/The_Mar_as_-_No_One_Noticed_Extended_Spanish_(mp3.pm).mp3"
-        ></audio>
+                    const artist =
+                        this.parentElement
+                            .querySelector(
+                                ".artist"
+                            )
+                            .textContent;
 
-    </div>
+                    nowPlaying.textContent =
+                        "♪ Now playing: " +
+                        title +
+                        " • " +
+                        artist;
 
+                    nowPlaying.classList.add(
+                        "show"
+                    );
 
-    <!-- SONG 7 -->
 
-    <div class="song">
+                    audio.onended =
+                        function() {
 
-        <div
-            class="record"
-            data-song="song7"
-        >
+                            if (currentRecord) {
 
-            <img
-                class="cover"
-                src="Earnedit.jpg"
-                alt="Earned It"
-            >
+                                currentRecord.classList.remove(
+                                    "playing"
+                                );
 
-        </div>
+                            }
 
-        <div class="song-title">
-            Earned It
-        </div>
+                            nowPlaying.classList.remove(
+                                "show"
+                            );
 
-        <div class="artist">
-            The Weeknd
-        </div>
+                            currentAudio =
+                                null;
 
-        <audio
-            id="song7"
-            src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/The_Weeknd_-_Earned_(mp3.pm).mp3"
-        ></audio>
+                            currentRecord =
+                                null;
 
-    </div>
+                        };
 
+                }
 
-</div>
+            );
 
+        });
 
-<div id="nowPlaying">
-    ♪ Nothing playing right now
-</div>
 
-
-<button
-    id="exit"
-    onclick="goBack()"
->
-    ← Exit Letter
-</button>
-
-
-<script>
-
-const records =
-    document.querySelectorAll(".record");
-
-const nowPlaying =
-    document.getElementById("nowPlaying");
-
-let currentAudio = null;
-
-let currentRecord = null;
-
-
-records.forEach(record => {
-
-    record.addEventListener(
-        "click",
-        function() {
-
-            const songID =
-                this.getAttribute(
-                    "data-song"
-                );
-
-            const audio =
-                document.getElementById(
-                    songID
-                );
-
-
-            /*
-                CLICKING THE CURRENT
-                SONG PAUSES IT.
-            */
-
-            if (
-                currentAudio === audio &&
-                !audio.paused
-            ) {
-
-                audio.pause();
-
-                this.classList.remove(
-                    "playing"
-                );
-
-                nowPlaying.classList.remove(
-                    "show"
-                );
-
-                return;
-            }
-
-
-            /*
-                STOP PREVIOUS SONG
-            */
+        function goBack() {
 
             if (currentAudio) {
 
                 currentAudio.pause();
 
                 currentAudio.currentTime = 0;
+
             }
 
             if (currentRecord) {
@@ -710,134 +866,12 @@ records.forEach(record => {
 
             }
 
-
-            /*
-                START NEW SONG
-            */
-
-            currentAudio = audio;
-
-            currentRecord = this;
-
-            audio.currentTime = 0;
-
-
-            audio.play()
-                .then(() => {
-
-                    /*
-                        ONLY START THE
-                        RECORD ANIMATION
-                        AFTER AUDIO
-                        ACTUALLY STARTS.
-                    */
-
-                    this.classList.add(
-                        "playing"
-                    );
-
-                })
-                .catch(error => {
-
-                    console.log(
-                        "Audio could not start:",
-                        error
-                    );
-
-                });
-
-
-            /*
-                NOW PLAYING TEXT
-            */
-
-            const title =
-                this.parentElement
-                    .querySelector(
-                        ".song-title"
-                    )
-                    .textContent;
-
-            const artist =
-                this.parentElement
-                    .querySelector(
-                        ".artist"
-                    )
-                    .textContent;
-
-            nowPlaying.textContent =
-                "♪ Now playing: " +
-                title +
-                " • " +
-                artist;
-
-            nowPlaying.classList.add(
-                "show"
-            );
-
-
-            /*
-                SONG FINISHED
-            */
-
-            audio.onended =
-                function() {
-
-                    if (currentRecord) {
-
-                        currentRecord.classList.remove(
-                            "playing"
-                        );
-
-                    }
-
-                    nowPlaying.classList.remove(
-                        "show"
-                    );
-
-                    currentAudio =
-                        null;
-
-                    currentRecord =
-                        null;
-
-                };
+            window.location.href =
+                "letters.html";
 
         }
 
-    );
-
-});
-
-
-/*
-    EXIT
-*/
-
-function goBack() {
-
-    if (currentAudio) {
-
-        currentAudio.pause();
-
-        currentAudio.currentTime = 0;
-
-    }
-
-    if (currentRecord) {
-
-        currentRecord.classList.remove(
-            "playing"
-        );
-
-    }
-
-    window.location.href =
-        "letters.html";
-
-}
-
-</script>
+    </script>
 
 
 </body>
