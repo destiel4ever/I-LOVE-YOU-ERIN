@@ -32,39 +32,8 @@
 
 
         /* =========================
-           DECORATIONS
+           SOFT OVERLAY
         ========================= */
-
-        .page-deco {
-            position: fixed;
-            pointer-events: none;
-            z-index: 1;
-            object-fit: contain;
-        }
-
-        .deco-left {
-            width: 90px;
-            top: 8%;
-            left: 2%;
-            transform: rotate(-12deg);
-        }
-
-        .deco-right {
-            width: 85px;
-            top: 10%;
-            right: 2%;
-            transform: rotate(10deg);
-        }
-
-        .deco-bottom {
-            width: 110px;
-            bottom: 2%;
-            left: 2%;
-            transform: rotate(-8deg);
-        }
-
-
-        /* SOFT OVERLAY */
 
         body::before {
 
@@ -81,7 +50,9 @@
         }
 
 
-        /* SPARKLES */
+        /* =========================
+           SPARKLES
+        ========================= */
 
         .sparkle {
 
@@ -98,7 +69,7 @@
             animation:
                 floatSparkle 4s ease-in-out infinite;
 
-            z-index: 2;
+            z-index: 1;
         }
 
         .s1 {
@@ -172,9 +143,6 @@
             text-align: center;
 
             padding: 25px;
-
-            position: relative;
-            z-index: 3;
         }
 
 
@@ -192,27 +160,10 @@
         }
 
 
-        /* =========================
-           REAL ENVELOPE
-        ========================= */
-
-        .envelope-wrapper {
-
-            position: relative;
+        .envelope {
 
             width: 245px;
             height: 165px;
-
-            cursor: pointer;
-
-            perspective: 900px;
-        }
-
-
-        .envelope {
-
-            width: 100%;
-            height: 100%;
 
             position: relative;
 
@@ -224,14 +175,14 @@
                 0 18px 45px
                 rgba(70,25,60,.25);
 
-            overflow: hidden;
+            cursor: pointer;
 
             transition:
                 transform .3s ease;
         }
 
 
-        .envelope-wrapper:hover .envelope {
+        .envelope:hover {
 
             transform:
                 scale(1.07)
@@ -239,50 +190,9 @@
         }
 
 
-        /* ENVELOPE FRONT */
-
-        .envelope-front {
-
-            position: absolute;
-
-            inset: 0;
-
-            background: #fff8fc;
-
-            z-index: 3;
-        }
-
-
-        /* LOWER ENVELOPE FOLD */
-
-        .envelope-front::after {
+        .envelope::before {
 
             content: "";
-
-            position: absolute;
-
-            left: 0;
-            bottom: 0;
-
-            width: 0;
-            height: 0;
-
-            border-left:
-                122px solid transparent;
-
-            border-right:
-                122px solid transparent;
-
-            border-bottom:
-                92px solid #ffe5f0;
-
-            z-index: 4;
-        }
-
-
-        /* TOP FLAP */
-
-        .envelope-flap {
 
             position: absolute;
 
@@ -300,92 +210,24 @@
 
             border-top:
                 92px solid #f6b3d0;
-
-            transform-origin: top center;
-
-            transition:
-                transform .8s ease;
-
-            z-index: 6;
         }
 
 
-        /* HEART */
+        .envelope::after {
 
-        .envelope-heart {
+            content: "💗";
 
             position: absolute;
 
             left: 50%;
-            top: 51%;
+            top: 50%;
 
             transform:
                 translate(-50%, -50%);
 
             font-size: 45px;
 
-            z-index: 8;
-
-            transition:
-                opacity .3s ease;
-        }
-
-
-        /* LETTER INSIDE */
-
-        .inside-letter {
-
-            position: absolute;
-
-            left: 50%;
-            top: 25px;
-
-            width: 82%;
-            height: 90%;
-
-            transform:
-                translateX(-50%)
-                translateY(70px);
-
-            background: white;
-
-            border-radius: 8px;
-
-            z-index: 2;
-
-            transition:
-                transform .8s ease;
-
-            box-shadow:
-                0 5px 15px
-                rgba(60,20,50,.15);
-        }
-
-
-        /* OPEN STATE */
-
-        .envelope-wrapper.opening .envelope-flap {
-
-            transform:
-                rotateX(180deg);
-        }
-
-        .envelope-wrapper.opening .inside-letter {
-
-            transform:
-                translateX(-50%)
-                translateY(-25px);
-        }
-
-        .envelope-wrapper.opening .envelope-heart {
-
-            opacity: 0;
-        }
-
-
-        .envelope-wrapper.opening {
-
-            pointer-events: none;
+            z-index: 5;
         }
 
 
@@ -404,8 +246,6 @@
             text-shadow:
                 0 2px 8px
                 rgba(70,30,60,.5);
-
-            z-index: 10;
         }
 
 
@@ -422,10 +262,6 @@
             min-height: 100vh;
 
             padding: 55px 20px 110px;
-
-            position: relative;
-
-            z-index: 3;
         }
 
 
@@ -534,7 +370,7 @@
 
 
         /* =========================
-           FINAL MESSAGE
+           FINAL SCREEN
         ========================= */
 
         #finalScreen {
@@ -543,7 +379,7 @@
 
             min-height: 100vh;
 
-            padding: 40px 20px;
+            padding: 40px 20px 130px;
 
             flex-direction: column;
 
@@ -558,20 +394,18 @@
 
             animation:
                 finalAppear 1s ease;
-
-            position: relative;
-
-            z-index: 3;
         }
 
 
         @keyframes finalAppear {
 
             from {
+
                 opacity: 0;
             }
 
             to {
+
                 opacity: 1;
             }
         }
@@ -636,26 +470,254 @@
         }
 
 
-        .finalHeart {
+        /* =========================
+           HIDDEN ARROW
+        ========================= */
 
-            font-size: 34px;
+        #secretArrow {
 
-            margin: 20px 0 10px;
+            margin-top: 35px;
+
+            font-size: 32px;
+
+            color: #d86698;
+
+            cursor: pointer;
+
+            opacity: 0;
 
             animation:
-                heartbeat 1.5s infinite;
+                arrowAppear 1.5s ease forwards;
+
+            animation-delay: 2s;
+
+            transition:
+                transform .3s ease;
         }
 
 
-        @keyframes heartbeat {
+        #secretArrow:hover {
 
-            0%, 100% {
+            transform:
+                translateX(8px)
+                scale(1.12);
+        }
+
+
+        @keyframes arrowAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateX(-10px);
+            }
+
+            to {
+
+                opacity: .75;
+
+                transform:
+                    translateX(0);
+            }
+        }
+
+
+        /* =========================
+           SECRET SCREEN
+        ========================= */
+
+        #secretScreen {
+
+            display: none;
+
+            min-height: 100vh;
+
+            padding: 40px 20px;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                rgba(255,225,242,.9);
+
+            animation:
+                secretAppear 1s ease;
+        }
+
+
+        @keyframes secretAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform: scale(.97);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: scale(1);
+            }
+        }
+
+
+        #secretScreen h2 {
+
+            color: #d86698;
+
+            font-size: 32px;
+
+            margin-bottom: 15px;
+        }
+
+
+        #secretHint {
+
+            color: #80506d;
+
+            font-size: 17px;
+
+            min-height: 30px;
+
+            margin-bottom: 25px;
+
+            max-width: 500px;
+        }
+
+
+        /* =========================
+           SECRET HEART
+        ========================= */
+
+        #secretHeart {
+
+            font-size: 70px;
+
+            cursor: pointer;
+
+            user-select: none;
+
+            transition:
+                transform .2s ease;
+        }
+
+
+        #secretHeart:hover {
+
+            transform:
+                scale(1.12);
+        }
+
+
+        #secretHeart.clicked {
+
+            animation:
+                secretHeartbeat .35s ease;
+        }
+
+
+        @keyframes secretHeartbeat {
+
+            0% {
                 transform: scale(1);
             }
 
             50% {
-                transform: scale(1.15);
+                transform: scale(1.25);
             }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+
+        #clickCounter {
+
+            margin-top: 12px;
+
+            color: #c75d8b;
+
+            font-size: 15px;
+
+            opacity: .8;
+        }
+
+
+        /* =========================
+           VOICE MESSAGE
+        ========================= */
+
+        #voiceMessage {
+
+            display: none;
+
+            margin-top: 30px;
+
+            padding: 25px;
+
+            width: 90%;
+
+            max-width: 500px;
+
+            background:
+                rgba(255,255,255,.9);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 12px 30px
+                rgba(70,25,60,.2);
+
+            animation:
+                voiceAppear .8s ease;
+        }
+
+
+        @keyframes voiceAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        #voiceMessage h3 {
+
+            color: #d86698;
+
+            margin-top: 0;
+        }
+
+
+        #voicePlaceholder {
+
+            color: #80506d;
+
+            font-size: 16px;
+
+            line-height: 1.6;
         }
 
 
@@ -693,12 +755,14 @@
 
 
         button:hover {
+
             transform:
                 scale(1.06);
         }
 
 
         #finishButton {
+
             margin-top: 35px;
         }
 
@@ -727,27 +791,27 @@
         @media(max-width:600px) {
 
             #opening h1 {
+
                 font-size: 30px;
             }
 
-            .envelope-wrapper {
+
+            .envelope {
+
                 width: 210px;
                 height: 145px;
             }
 
-            .envelope-front::after {
+
+            .envelope::before {
 
                 border-left-width: 105px;
-                border-right-width: 105px;
-                border-bottom-width: 80px;
-            }
 
-            .envelope-flap {
-
-                border-left-width: 105px;
                 border-right-width: 105px;
+
                 border-top-width: 80px;
             }
+
 
             .letterPaper {
 
@@ -757,36 +821,38 @@
                     32px 25px;
             }
 
+
             .letterHeader {
+
                 font-size: 29px;
             }
 
+
             .letterText {
+
                 font-size: 16px;
+
                 line-height: 1.7;
             }
 
+
             #finalScreen h2 {
+
                 font-size: 29px;
             }
 
-            .deco-left {
-                width: 55px;
-                top: 8%;
-                left: 1%;
+
+            #secretScreen h2 {
+
+                font-size: 27px;
             }
 
-            .deco-right {
-                width: 55px;
-                top: 10%;
-                right: 1%;
+
+            #secretHeart {
+
+                font-size: 62px;
             }
 
-            .deco-bottom {
-                width: 65px;
-                bottom: 1%;
-                left: 1%;
-            }
         }
 
     </style>
@@ -797,34 +863,16 @@
 <body>
 
 
-<!-- DECORATIONS -->
-
-<img
-    class="page-deco deco-left"
-    src="flowers.png"
-    alt=""
->
-
-<img
-    class="page-deco deco-right"
-    src="sparklespink.png"
-    alt=""
->
-
-<img
-    class="page-deco deco-bottom"
-    src="butterfly3.png"
-    alt=""
->
-
-
-<!-- SPARKLES -->
+<!-- =========================
+     SPARKLES
+========================= -->
 
 <div class="sparkle s1">✦</div>
 <div class="sparkle s2">✧</div>
 <div class="sparkle s3">✦</div>
 <div class="sparkle s4">✧</div>
 <div class="sparkle s5">♡</div>
+
 
 
 <!-- =========================
@@ -839,24 +887,9 @@
 
 
     <div
-        class="envelope-wrapper"
+        class="envelope"
         onclick="openLetter()"
     >
-
-        <div class="envelope">
-
-            <div class="inside-letter"></div>
-
-            <div class="envelope-front"></div>
-
-            <div class="envelope-flap"></div>
-
-            <div class="envelope-heart">
-                💗
-            </div>
-
-        </div>
-
 
         <div class="openText">
             click to open 💗
@@ -865,6 +898,7 @@
     </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -939,6 +973,7 @@
 </section>
 
 
+
 <!-- =========================
      FINAL SCREEN
 ========================= -->
@@ -963,13 +998,19 @@
     >
 
 
-    <div class="finalHeart">
-        💗
+    <div class="finalText">
+        Happy anniversary, Erin. 🫶
     </div>
 
 
-    <div class="finalText">
-        Happy anniversary, Erin. 🫶
+    <!-- HIDDEN ARROW -->
+
+    <div
+        id="secretArrow"
+        onclick="openSecret()"
+        title="..."
+    >
+        ➜
     </div>
 
 
@@ -981,7 +1022,68 @@
 </section>
 
 
-<!-- EXIT -->
+
+<!-- =========================
+     SECRET SCREEN
+========================= -->
+
+<section id="secretScreen">
+
+
+    <h2>
+        You found something... 💗
+    </h2>
+
+
+    <div id="secretHint">
+        ...
+    </div>
+
+
+    <div
+        id="secretHeart"
+        onclick="clickSecretHeart()"
+    >
+        ♡
+    </div>
+
+
+    <div id="clickCounter">
+        0 / 7
+    </div>
+
+
+    <!-- VOICE MESSAGE -->
+
+    <div id="voiceMessage">
+
+        <h3>
+            You actually did it 😭💗
+        </h3>
+
+
+        <div id="voicePlaceholder">
+            Your voice message will go here.
+        </div>
+
+    </div>
+
+
+    <br>
+
+
+    <button onclick="goBack()">
+        ← Back to Letters
+    </button>
+
+
+</section>
+
+
+
+<!-- =========================
+     EXIT BUTTON
+========================= -->
 
 <button
     id="exit"
@@ -991,35 +1093,33 @@
 </button>
 
 
+
 <script>
 
 
+/* =========================
+   OPEN LETTER
+========================= */
+
 function openLetter() {
 
-    const wrapper =
-        document.querySelector(".envelope-wrapper");
+    document.getElementById("opening").style.display =
+        "none";
 
-    wrapper.classList.add("opening");
+    document.getElementById("letter").style.display =
+        "block";
 
+    document.getElementById("exit").style.display =
+        "block";
 
-    setTimeout(function() {
-
-        document.getElementById("opening").style.display =
-            "none";
-
-        document.getElementById("letter").style.display =
-            "block";
-
-        document.getElementById("exit").style.display =
-            "block";
-
-        window.scrollTo(0, 0);
-
-    }, 900);
-
+    window.scrollTo(0, 0);
 }
 
 
+
+/* =========================
+   FINISH LETTER
+========================= */
 
 function finishLetter() {
 
@@ -1036,6 +1136,123 @@ function finishLetter() {
 }
 
 
+
+/* =========================
+   OPEN SECRET
+========================= */
+
+function openSecret() {
+
+    document.getElementById("finalScreen").style.display =
+        "none";
+
+    document.getElementById("secretScreen").style.display =
+        "flex";
+
+    window.scrollTo(0, 0);
+
+}
+
+
+
+/* =========================
+   SECRET HEART
+========================= */
+
+let secretClicks = 0;
+
+
+function clickSecretHeart() {
+
+    secretClicks++;
+
+    const heart =
+        document.getElementById("secretHeart");
+
+    const counter =
+        document.getElementById("clickCounter");
+
+    const hint =
+        document.getElementById("secretHint");
+
+
+    heart.classList.remove("clicked");
+
+    void heart.offsetWidth;
+
+    heart.classList.add("clicked");
+
+
+    counter.textContent =
+        secretClicks + " / 7";
+
+
+    if (secretClicks === 1) {
+
+        hint.textContent =
+            "Hmm... something happened. Maybe click it again?";
+
+    }
+
+
+    if (secretClicks === 2) {
+
+        hint.textContent =
+            "You're doing something..";
+
+    }
+
+
+    if (secretClicks === 3) {
+
+        hint.textContent =
+            "Keep going..";
+
+    }
+
+
+    if (secretClicks === 4) {
+
+        hint.textContent =
+            "You're halfway there..";
+
+    }
+
+
+    if (secretClicks === 5) {
+
+        hint.textContent =
+            "Don't stop now..";
+
+    }
+
+
+    if (secretClicks === 6) {
+
+        hint.textContent =
+            "One more..";
+
+    }
+
+
+    if (secretClicks >= 7) {
+
+        hint.textContent =
+            "You found the secret. 💗";
+
+
+        document.getElementById("voiceMessage").style.display =
+            "block";
+
+    }
+
+}
+
+
+
+/* =========================
+   GO BACK
+========================= */
 
 function goBack() {
 
