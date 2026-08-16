@@ -18,395 +18,748 @@
 
         body {
             font-family: Arial, sans-serif;
+
             background-image: url("Dog.gif");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+
             color: #704c63;
+
             overflow-x: hidden;
         }
 
+
         body::before {
             content: "";
+
             position: fixed;
             inset: 0;
-            background: rgba(255, 220, 238, 0.45);
+
+            background:
+                rgba(255, 220, 238, 0.45);
+
             z-index: -1;
         }
 
+
         .sparkle {
             position: fixed;
+
             color: white;
             font-size: 22px;
             opacity: .8;
+
             pointer-events: none;
-            animation: floatSparkle 4s ease-in-out infinite;
+
+            animation:
+                floatSparkle 4s ease-in-out infinite;
+
             z-index: 1;
         }
 
-        .s1 { left: 8%; top: 18%; }
-        .s2 { left: 88%; top: 24%; animation-delay: 1s; }
-        .s3 { left: 17%; top: 75%; animation-delay: 2s; }
-        .s4 { left: 80%; top: 70%; animation-delay: .5s; }
-        .s5 { left: 48%; top: 10%; animation-delay: 1.5s; }
+        .s1 {
+            left: 8%;
+            top: 18%;
+        }
+
+        .s2 {
+            left: 88%;
+            top: 24%;
+            animation-delay: 1s;
+        }
+
+        .s3 {
+            left: 17%;
+            top: 75%;
+            animation-delay: 2s;
+        }
+
+        .s4 {
+            left: 80%;
+            top: 70%;
+            animation-delay: .5s;
+        }
+
+        .s5 {
+            left: 48%;
+            top: 10%;
+            animation-delay: 1.5s;
+        }
+
 
         @keyframes floatSparkle {
+
             0%, 100% {
-                transform: translateY(0) scale(1);
+                transform:
+                    translateY(0)
+                    scale(1);
+
                 opacity: .55;
             }
 
             50% {
-                transform: translateY(-12px) scale(1.2);
+                transform:
+                    translateY(-12px)
+                    scale(1.2);
+
                 opacity: 1;
             }
         }
 
+
         #opening {
+
             min-height: 100vh;
+
             display: flex;
             flex-direction: column;
+
             justify-content: center;
             align-items: center;
+
             text-align: center;
+
             padding: 25px;
         }
 
+
         #opening h1 {
+
             color: white;
+
             font-size: 38px;
+
             margin-bottom: 28px;
-            text-shadow: 0 3px 12px rgba(70,30,60,.5);
+
+            text-shadow:
+                0 3px 12px
+                rgba(70,30,60,.5);
         }
+
 
         .envelope {
+
             width: 245px;
             height: 165px;
+
             position: relative;
+
             background: #fff8fc;
+
             border-radius: 15px;
-            box-shadow: 0 18px 45px rgba(70,25,60,.25);
+
+            box-shadow:
+                0 18px 45px
+                rgba(70,25,60,.25);
+
             cursor: pointer;
-            transition: transform .3s ease;
+
+            transition:
+                transform .3s ease;
         }
+
 
         .envelope:hover {
-            transform: scale(1.07) rotate(1deg);
+
+            transform:
+                scale(1.07)
+                rotate(1deg);
         }
+
 
         .envelope::before {
+
             content: "";
+
             position: absolute;
+
             top: 0;
             left: 0;
+
             width: 0;
             height: 0;
-            border-left: 122px solid transparent;
-            border-right: 122px solid transparent;
-            border-top: 92px solid #f6b3d0;
+
+            border-left:
+                122px solid transparent;
+
+            border-right:
+                122px solid transparent;
+
+            border-top:
+                92px solid #f6b3d0;
         }
 
+
         .envelope::after {
+
             content: "💗";
+
             position: absolute;
+
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%);
+
+            transform:
+                translate(-50%, -50%);
+
             font-size: 45px;
+
             z-index: 5;
         }
 
+
         .openText {
+
             position: absolute;
+
             width: 100%;
+
             bottom: -42px;
+
             color: white;
+
             font-size: 15px;
-            text-shadow: 0 2px 8px rgba(70,30,60,.5);
+
+            text-shadow:
+                0 2px 8px
+                rgba(70,30,60,.5);
         }
 
+
         #letter {
+
             display: none;
+
             width: 100%;
+
             min-height: 100vh;
+
             padding: 55px 20px 110px;
         }
 
+
         .letterPaper {
+
             width: 92%;
+
             max-width: 780px;
+
             margin: auto;
+
             padding: 42px 45px;
-            background: rgba(255, 250, 253, .94);
+
+            background:
+                rgba(255, 250, 253, .94);
+
             border-radius: 28px;
-            box-shadow: 0 20px 55px rgba(70,25,60,.25);
-            animation: letterAppear .8s ease;
+
+            box-shadow:
+                0 20px 55px
+                rgba(70,25,60,.25);
+
+            animation:
+                letterAppear .8s ease;
         }
 
+
         @keyframes letterAppear {
+
             from {
                 opacity: 0;
-                transform: translateY(35px) scale(.97);
+
+                transform:
+                    translateY(35px)
+                    scale(.97);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+
+                transform:
+                    translateY(0)
+                    scale(1);
             }
         }
 
+
         .letterHeader {
+
             text-align: center;
+
             color: #e27aa8;
+
             font-size: 34px;
-            margin: 0 0 30px;
+
+            margin:
+                0 0 30px;
+
             line-height: 1.25;
         }
 
+
         .letterText {
+
             font-size: 17px;
+
             line-height: 1.75;
+
             color: #704c63;
+
             text-align: left;
         }
 
+
         .letterText p {
-            margin: 0 0 22px;
+            margin:
+                0 0 22px;
         }
 
+
         .littleHeart {
+
             text-align: center;
+
             font-size: 25px;
+
             margin: 25px 0;
         }
 
+
         .signature {
+
             text-align: center;
+
             margin-top: 28px;
+
             color: #d86698;
+
             font-size: 19px;
+
             font-weight: bold;
         }
 
+
         #finalScreen {
+
             display: none;
+
             min-height: 100vh;
+
             padding: 40px 20px 130px;
+
             flex-direction: column;
+
             justify-content: center;
+
             align-items: center;
+
             text-align: center;
-            background: rgba(255,225,242,.82);
-            animation: finalAppear 1s ease;
+
+            background:
+                rgba(255,225,242,.82);
+
+            animation:
+                finalAppear 1s ease;
         }
+
 
         @keyframes finalAppear {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
 
-        #finalScreen h2 {
-            color: #d86698;
-            font-size: 34px;
-            margin-bottom: 10px;
-        }
-
-        .finalText {
-            color: #80506d;
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
-
-        #wave {
-            width: 280px;
-            max-width: 80vw;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(60,20,60,.25);
-            animation: waveAppear 1s ease;
-        }
-
-        #vm {
-            width: 300px;
-            max-width: 85vw;
-            border-radius: 25px;
-            margin-top: 20px;
-            box-shadow: 0 15px 40px rgba(60,20,60,.25);
-        }
-
-        @keyframes waveAppear {
             from {
                 opacity: 0;
-                transform: scale(.8) translateY(20px);
             }
 
             to {
                 opacity: 1;
-                transform: scale(1) translateY(0);
             }
         }
 
-        #secretArrow {
-            margin-top: 35px;
-            font-size: 32px;
+
+        #finalScreen h2 {
+
             color: #d86698;
-            cursor: pointer;
-            opacity: 0;
-            animation: arrowAppear 1.5s ease forwards;
-            animation-delay: 2s;
-            transition: transform .3s ease;
+
+            font-size: 34px;
+
+            margin-bottom: 10px;
         }
 
-        #secretArrow:hover {
-            transform: translateX(8px) scale(1.12);
+
+        .finalText {
+
+            color: #80506d;
+
+            font-size: 18px;
+
+            margin-bottom: 25px;
         }
 
-        @keyframes arrowAppear {
+
+        #wave {
+
+            width: 280px;
+
+            max-width: 80vw;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(60,20,60,.25);
+
+            animation:
+                waveAppear 1s ease;
+        }
+
+
+        @keyframes waveAppear {
+
             from {
+
                 opacity: 0;
-                transform: translateX(-10px);
+
+                transform:
+                    scale(.8)
+                    translateY(20px);
             }
 
             to {
-                opacity: .75;
-                transform: translateX(0);
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
             }
         }
 
-        #secretScreen {
-            display: none;
-            min-height: 100vh;
-            padding: 40px 20px;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: rgba(255,225,242,.9);
-            animation: secretAppear 1s ease;
+
+        #secretArrow {
+
+            margin-top: 35px;
+
+            font-size: 32px;
+
+            color: #d86698;
+
+            cursor: pointer;
+
+            opacity: 0;
+
+            animation:
+                arrowAppear 1.5s ease forwards;
+
+            animation-delay: 2s;
+
+            transition:
+                transform .3s ease;
         }
 
-        @keyframes secretAppear {
+
+        #secretArrow:hover {
+
+            transform:
+                translateX(8px)
+                scale(1.12);
+        }
+
+
+        @keyframes arrowAppear {
+
             from {
+
                 opacity: 0;
+
+                transform:
+                    translateX(-10px);
+            }
+
+            to {
+
+                opacity: .75;
+
+                transform:
+                    translateX(0);
+            }
+        }
+
+
+        #secretScreen {
+
+            display: none;
+
+            min-height: 100vh;
+
+            padding: 40px 20px;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                rgba(255,225,242,.9);
+
+            animation:
+                secretAppear 1s ease;
+        }
+
+
+        @keyframes secretAppear {
+
+            from {
+
+                opacity: 0;
+
                 transform: scale(.97);
             }
 
             to {
+
                 opacity: 1;
+
                 transform: scale(1);
             }
         }
 
+
         #secretScreen h2 {
+
             color: #d86698;
+
             font-size: 32px;
+
             margin-bottom: 15px;
         }
 
+
         #secretHint {
+
             color: #80506d;
+
             font-size: 17px;
+
             min-height: 30px;
+
             margin-bottom: 25px;
+
             max-width: 500px;
         }
 
+
         #secretHeart {
+
             font-size: 70px;
+
             cursor: pointer;
+
             user-select: none;
-            transition: transform .2s ease;
+
+            transition:
+                transform .2s ease;
         }
+
 
         #secretHeart:hover {
-            transform: scale(1.12);
+
+            transform:
+                scale(1.12);
         }
+
 
         #secretHeart.clicked {
-            animation: secretHeartbeat .35s ease;
+
+            animation:
+                secretHeartbeat .35s ease;
         }
+
 
         @keyframes secretHeartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.25); }
-            100% { transform: scale(1); }
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.25);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
+
         #clickCounter {
+
             margin-top: 12px;
+
             color: #c75d8b;
+
             font-size: 15px;
+
             opacity: .8;
         }
 
+
+        /* =========================
+           VOICE MESSAGE
+        ========================= */
+
         #voiceMessage {
+
             display: none;
+
             margin-top: 30px;
+
             padding: 25px;
+
             width: 90%;
+
             max-width: 500px;
-            background: rgba(255,255,255,.9);
+
+            background:
+                rgba(255,255,255,.9);
+
             border-radius: 25px;
-            box-shadow: 0 12px 30px rgba(70,25,60,.2);
-            animation: voiceAppear .8s ease;
+
+            box-shadow:
+                0 12px 30px
+                rgba(70,25,60,.2);
+
+            animation:
+                voiceAppear .8s ease;
         }
 
+
         @keyframes voiceAppear {
+
             from {
                 opacity: 0;
-                transform: translateY(15px);
+
+                transform:
+                    translateY(15px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
             }
         }
 
+
         #voiceMessage h3 {
+
             color: #d86698;
+
             margin-top: 0;
         }
 
-        #voicePlaceholder {
-            color: #80506d;
-            font-size: 16px;
-            line-height: 1.6;
+
+        /* =========================
+           VM IMAGE
+        ========================= */
+
+        #vmImage {
+
+            width: 280px;
+
+            max-width: 80vw;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 30px
+                rgba(70,25,60,.2);
+
+            transition:
+                transform .25s ease;
         }
 
-        audio {
-            width: 100%;
-            margin-top: 15px;
+
+        #vmImage:hover {
+
+            transform:
+                scale(1.05);
         }
+
+
+        #vmHint {
+
+            color: #80506d;
+
+            font-size: 15px;
+
+            margin-top: 12px;
+
+            margin-bottom: 0;
+        }
+
 
         button {
+
             border: none;
+
             border-radius: 25px;
-            background: rgba(255,255,255,.95);
+
+            background:
+                rgba(255,255,255,.95);
+
             color: #d86698;
+
             font-size: 15px;
+
             font-weight: bold;
-            padding: 10px 26px;
+
+            padding:
+                10px 26px;
+
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(60,20,60,.18);
-            transition: transform .25s ease;
+
+            box-shadow:
+                0 8px 20px
+                rgba(60,20,60,.18);
+
+            transition:
+                transform .25s ease;
         }
 
+
         button:hover {
-            transform: scale(1.06);
+
+            transform:
+                scale(1.06);
         }
+
 
         #finishButton {
             margin-top: 35px;
         }
 
+
         #exit {
+
             position: fixed;
+
             bottom: 15px;
             left: 50%;
-            transform: translateX(-50%);
+
+            transform:
+                translateX(-50%);
+
             z-index: 100;
+
             display: none;
         }
+
 
         @media(max-width:600px) {
 
@@ -420,14 +773,18 @@
             }
 
             .envelope::before {
+
                 border-left-width: 105px;
                 border-right-width: 105px;
                 border-top-width: 80px;
             }
 
             .letterPaper {
+
                 width: 94%;
-                padding: 32px 25px;
+
+                padding:
+                    32px 25px;
             }
 
             .letterHeader {
@@ -435,7 +792,9 @@
             }
 
             .letterText {
+
                 font-size: 16px;
+
                 line-height: 1.7;
             }
 
@@ -451,22 +810,27 @@
                 font-size: 62px;
             }
 
-            #vm {
-                width: 250px;
+            #vmImage {
+                width: 240px;
             }
+
         }
 
     </style>
 
 </head>
 
+
 <body>
+
 
 <div class="sparkle s1">✦</div>
 <div class="sparkle s2">✧</div>
 <div class="sparkle s3">✦</div>
 <div class="sparkle s4">✧</div>
 <div class="sparkle s5">♡</div>
+
+
 
 <section id="opening">
 
@@ -486,6 +850,8 @@
     </div>
 
 </section>
+
+
 
 <section id="letter">
 
@@ -527,6 +893,7 @@
 
         </div>
 
+
         <div style="text-align:center;">
 
             <button
@@ -541,6 +908,9 @@
     </div>
 
 </section>
+
+
+
 <section id="finalScreen">
 
     <h2>
@@ -561,6 +931,7 @@
         Happy anniversary, Erin. 🫶
     </div>
 
+
     <div
         id="secretArrow"
         onclick="openSecret()"
@@ -569,11 +940,14 @@
         ➜
     </div>
 
+
     <button onclick="goBack()">
         ← Back to Letters
     </button>
 
 </section>
+
+
 
 <section id="secretScreen">
 
@@ -582,8 +956,9 @@
     </h2>
 
     <div id="secretHint">
-        Click the heart 7 times. 💗
+        ...
     </div>
+
 
     <div
         id="secretHeart"
@@ -592,9 +967,11 @@
         ♡
     </div>
 
+
     <div id="clickCounter">
         0 / 7
     </div>
+
 
     <div id="voiceMessage">
 
@@ -602,30 +979,38 @@
             You actually did it! you're not a stupid little shit!
         </h3>
 
-        <div id="voicePlaceholder">
-            I made this just for you. 💗
-        </div>
-
-        <audio controls>
-            <source src="ANGEL.mp3" type="audio/mpeg">
-            Your browser does not support audio.
-        </audio>
 
         <img
-            id="vm"
+            id="vmImage"
             src="vm.png"
-            alt="A little surprise for you 💗"
+            alt="Voice message"
+            onclick="playVoiceMessage()"
         >
+
+        <div id="vmHint">
+            Click the image to play my voice message 🎧💗
+        </div>
+
+
+        <audio
+            id="voiceAudio"
+            src="ANGEL.mp3"
+            preload="auto"
+        ></audio>
 
     </div>
 
+
     <br>
+
 
     <button onclick="goBack()">
         ← Back to Letters
     </button>
 
 </section>
+
+
 
 <button
     id="exit"
@@ -634,7 +1019,10 @@
     ← Exit Letter
 </button>
 
+
+
 <script>
+
 
 function openLetter() {
 
@@ -649,6 +1037,7 @@ function openLetter() {
 
     window.scrollTo(0, 0);
 }
+
 
 
 function finishLetter() {
@@ -666,6 +1055,7 @@ function finishLetter() {
 }
 
 
+
 function openSecret() {
 
     document.getElementById("finalScreen").style.display =
@@ -675,7 +1065,9 @@ function openSecret() {
         "flex";
 
     window.scrollTo(0, 0);
+
 }
+
 
 
 let secretClicks = 0;
@@ -768,6 +1160,20 @@ function clickSecretHeart() {
 }
 
 
+
+function playVoiceMessage() {
+
+    const audio =
+        document.getElementById("voiceAudio");
+
+    audio.currentTime = 0;
+
+    audio.play();
+
+}
+
+
+
 function goBack() {
 
     window.location.href =
@@ -775,7 +1181,9 @@ function goBack() {
 
 }
 
+
 </script>
+
 
 </body>
 </html>
