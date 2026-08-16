@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Our Playlist 🎵</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background-image: url("grande.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            color: white;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background: rgba(255, 150, 195, 0.25);
+
+            z-index: -1;
+        }
+
+
+        /* TITLE */
+
+        h1 {
+            text-align: center;
+
+            margin: 25px 0 5px;
+
+            font-size: 43px;
+
+            color: white;
+
+            text-shadow:
+                0 3px 12px rgba(80, 30, 70, 0.45);
+        }
+
+
+        .subtitle {
+            text-align: center;
+
+            margin: 0 auto 20px;
+
+            font-size: 16px;
+
+            color: white;
+
+            text-shadow:
+                0 2px 8px rgba(80, 30, 70, 0.5);
+        }
+
+
+        /* PLAYLIST */
+
+        #playlist {
+
+            width: 94%;
+            max-width: 900px;
+
+            margin: 0 auto 90px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 38px 25px;
+
+            padding: 25px;
+        }
+
+
+        .song {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            text-align: center;
+        }
+
+
+        /* RECORD */
+
+        .record {
+
+            width: 175px;
+            height: 175px;
+
+            border-radius: 50%;
+
+            position: relative;
+
+            cursor: pointer;
+
+            overflow: hidden;
+
+            background: #111;
+
+            border: 6px solid #111;
+
+            box-shadow:
+                0 12px 30px rgba(40, 15, 50, 0.45);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        /*
+            This is the actual song cover.
+        */
+
+        .cover {
+
+            position: absolute;
+
+            width: 72%;
+            height: 72%;
+
+            left: 14%;
+            top: 14%;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            z-index: 2;
+        }
+
+
+        /*
+            Vinyl grooves.
+        */
+
+        .record::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 5px;
+
+            border-radius: 50%;
+
+            border:
+                2px solid rgba(255,255,255,0.08);
+
+            box-shadow:
+
+                0 0 0 9px rgba(255,255,255,0.035),
+
+                0 0 0 18px rgba(255,255,255,0.035),
+
+                0 0 0 27px rgba(255,255,255,0.03),
+
+                0 0 0 36px rgba(255,255,255,0.025);
+
+            z-index: 3;
+
+            pointer-events: none;
+        }
+
+
+        /*
+            Little center hole.
+        */
+
+        .record::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 22px;
+            height: 22px;
+
+            left: 50%;
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background: #f7a8c4;
+
+            border:
+                3px solid rgba(255,255,255,0.8);
+
+            z-index: 5;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.35);
+        }
+
+
+        /*
+            Hover.
+        */
+
+        .record:hover {
+
+            transform: scale(1.07);
+
+            box-shadow:
+
+                0 16px 35px
+                rgba(50,20,60,0.45),
+
+                0 0 30px
+                rgba(255,225,245,0.75);
+        }
+
+
+        /*
+            SPINNING RECORD
+        */
+
+        .record.playing {
+
+            animation:
+                spin 3s linear infinite;
+
+            box-shadow:
+
+                0 16px 35px
+                rgba(50,20,60,0.45),
+
+                0 0 38px
+                rgba(255,230,245,0.95);
+        }
+
+
+        @keyframes spin {
+
+            from {
+
+                transform:
+                    rotate(0deg);
+
+            }
+
+            to {
+
+                transform:
+                    rotate(360deg);
+
+            }
+
+        }
+
+
+        /* SONG INFORMATION */
+
+        .song-title {
+
+            margin-top: 14px;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            text-shadow:
+                0 2px 7px
+                rgba(60,20,60,0.65);
+        }
+
+
+        .artist {
+
+            margin-top: 4px;
+
+            color:
+                rgba(255,255,255,0.9);
+
+            font-size: 13px;
+
+            text-shadow:
+                0 2px 6px
+                rgba(60,20,60,0.6);
+        }
+
+
+        /* NOW PLAYING */
+
+        #nowPlaying {
+
+            position: fixed;
+
+            left: 50%;
+            bottom: 63px;
+
+            transform:
+                translateX(-50%);
+
+            min-width: 240px;
+            max-width: 85%;
+
+            padding: 10px 20px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,0.92);
+
+            color: #c75d8b;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 8px 25px
+                rgba(60,20,60,0.25);
+
+            opacity: 0;
+
+            transition:
+                opacity 0.3s ease;
+
+            pointer-events: none;
+
+            z-index: 50;
+        }
+
+
+        #nowPlaying.show {
+
+            opacity: 1;
+
+        }
+
+
+        /* EXIT */
+
+        #exit {
+
+            position: fixed;
+
+            left: 50%;
+            bottom: 15px;
+
+            transform:
+                translateX(-50%);
+
+            padding: 9px 25px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background:
+                rgba(255,255,255,0.95);
+
+            color: #c75d8b;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 7px 18px
+                rgba(50,20,60,0.2);
+
+            z-index: 60;
+        }
+
+
+        #exit:hover {
+
+            transform:
+                translateX(-50%)
+                scale(1.05);
+        }
+
+
+        /* PHONE */
+
+        @media (max-width: 700px) {
+
+            h1 {
+
+                font-size: 34px;
+
+                margin-top: 18px;
+            }
+
+
+            .subtitle {
+
+                font-size: 14px;
+            }
+
+
+            #playlist {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 30px 12px;
+
+                padding: 15px;
+            }
+
+
+            .record {
+
+                width: 135px;
+                height: 135px;
+            }
+
+
+            .song-title {
+
+                font-size: 15px;
+            }
+
+
+            .artist {
+
+                font-size: 12px;
+            }
+
+        }
+
+
+        @media (max-width: 420px) {
+
+            #playlist {
+
+                gap: 27px 5px;
+            }
+
+
+            .record {
+
+                width: 125px;
+                height: 125px;
+            }
+
+
+            h1 {
+
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<h1>Our Playlist 🎵</h1>
+
+<div class="subtitle">
+    songs that remind me of you 💗
+</div>
+
+
+<div id="playlist">
+
+
+    <!-- SONG 1 -->
+
+    <div class="song">
+
+        <div
+            class="record"
+            data-song="song1"
+        >
+
+            <img
+                class="cover"
+                src="ALLIDIDWASDREAMOFYOU.jpg"
+                alt="All I Did Was Dream of You"
+            >
+
+        </div>
+
+
+        <div class="song-title">
+            All I Did Was Dream of You
+        </div>
+
+        <div class="artist">
+            beabadoobee
+        </div>
+
+
+        <audio
+            id="song1"
+            src="beabadoobee_The_Mar_as_-_All_I_Did_Was_Dream_of_You_(mp3.pm).mp3"
+        ></audio>
+
+    </div>
+
+
+
+    <!-- SONG 2 -->
+
+    <div class="song">
+
+        <div
+            class="record"
+            data-song="song2"
+        >
+
+            <img
+                class="cover"
+                src="7rings.jpg"
+                alt="7 rings"
+            >
+
+        </div>
+
+
+        <div class="song-title">
+            7 rings
+        </div>
+
+        <div class="artist">
+            Ariana Grande
+        </div>
+
+
+        <audio
+            id="song2"
+            src="Ariana_Grande_-_7_rings_(mp3.pm).mp3"
+        ></audio>
+
+    </div>
+
+
+
+    <!-- SONG 3 -->
+
+    <div class="song">
+
+        <div
+            class="record"
+            data-song="song3"
+        >
+
+            <img
+                class="cover"
+                src="Theonlyexception.jpg"
+                alt="The Only Exception"
+            >
+
+        </div>
+
+
+        <div class="song-title">
+            The Only Exception
+        </div>
+
+        <div class="artist">
+            Paramore
+        </div>
+
+
+        <audio
+            id="song3"
+            src="Radio_ENERGY_-_PARAMORE_-_The_Only_Exception_(mp3.pm).mp3"
+        ></audio>
+
+    </div>
+
+
+
+    <!-- SONG 4 -->
+
+    <div class="song">
+
+        <div
+            class="record"
+            data-song="song4"
+        >
+
+            <img
+                class="cover"
+                src="Ojostristes.jpg"
+                alt="Ojos Tristes"
+            >
+
+        </div>
+
+
+        <div class="song-title">
+            Ojos Tristes
+        </div>
+
+        <div class="artist">
+            Selena Gomez, Benny Blanco & The Marías
+        </div>
+
+
+        <audio
+            id="song4"
+            src="Selena_Gomez_Benny_Blanco_The_Marias_-_Ojos_Tristes_(mp3.pm).mp3"
+        ></audio>
+
+    </div>
+
+
+
+    <!-- SONG 5 -->
+
+    <div class="song">
+
+        <div
+            class="record"
+            data-song="song5"
+        >
+
+            <img
+                class="cover"
+                src="Thankunext.jpg"
+                alt="thank u, next"
+            >
+
+        </div>
+
+
+        <div class="song-title">
+            thank u, next
+        </div>
+
+        <div class="artist">
+            Ariana Grande
+        </div>
+
+
+        <audio
+            id="song5"
+            src="thank_u_next_-_ariana_grande_(mp3.pm).mp3"
+        ></audio>
+
+    </div>
+
+
+
+    <!-- SONG 6 -->
+
+    <div class="song">
+
+        <div
+            class="record"
+            data-song="song6"
+        >
+
+            <img
+                class="cover"
+                src="Noonenoticed.jpg"
+                alt="No One Noticed"
+            >
+
+        </div>
+
+
+        <div class="song-title">
+            No One Noticed
+        </div>
+
+        <div class="artist">
+            The Marías
+        </div>
+
+
+        <audio
+            id="song6"
+            src="The_Mar_as_-_No_One_Noticed_Extended_Spanish_(mp3.pm).mp3"
+        ></audio>
+
+    </div>
+
+
+
+    <!-- SONG 7 -->
+
+    <div class="song">
+
+        <div
+            class="record"
+            data-song="song7"
+        >
+
+            <img
+                class="cover"
+                src="Earnedit.jpg"
+                alt="Earned It"
+            >
+
+        </div>
+
+
+        <div class="song-title">
+            Earned It
+        </div>
+
+        <div class="artist">
+            The Weeknd
+        </div>
+
+
+        <audio
+            id="song7"
+            src="The_Weeknd_-_Earned_(mp3.pm).mp3"
+        ></audio>
+
+    </div>
+
+
+</div>
+
+
+<div id="nowPlaying">
+    ♪ Nothing playing right now
+</div>
+
+
+<button
+    id="exit"
+    onclick="goBack()"
+>
+    ← Exit Letter
+</button>
+
+
+
+<script>
+
+
+const records =
+    document.querySelectorAll(".record");
+
+
+const nowPlaying =
+    document.getElementById("nowPlaying");
+
+
+let currentAudio = null;
+
+let currentRecord = null;
+
+
+
+records.forEach(record => {
+
+
+    record.addEventListener(
+        "click",
+        function() {
+
+
+            const songID =
+                this.getAttribute(
+                    "data-song"
+                );
+
+
+            const audio =
+                document.getElementById(
+                    songID
+                );
+
+
+            /*
+                CLICKING THE CURRENT
+                SONG PAUSES IT.
+            */
+
+            if (
+                currentAudio === audio &&
+                !audio.paused
+            ) {
+
+                audio.pause();
+
+                this.classList.remove(
+                    "playing"
+                );
+
+                nowPlaying.classList.remove(
+                    "show"
+                );
+
+                return;
+            }
+
+
+
+            /*
+                STOP PREVIOUS SONG
+            */
+
+            if (currentAudio) {
+
+                currentAudio.pause();
+
+                currentAudio.currentTime = 0;
+            }
+
+
+            if (currentRecord) {
+
+                currentRecord.classList.remove(
+                    "playing"
+                );
+            }
+
+
+
+            /*
+                START NEW SONG
+            */
+
+            currentAudio = audio;
+
+            currentRecord = this;
+
+
+            audio.currentTime = 0;
+
+
+            /*
+                Start audio.
+                If the browser refuses it,
+                we'll deal with that separately.
+            */
+
+            audio.play()
+                .catch(error => {
+
+                    console.log(
+                        "Audio could not start:",
+                        error
+                    );
+
+                });
+
+
+
+            /*
+                START SPINNING
+            */
+
+            this.classList.add(
+                "playing"
+            );
+
+
+
+            /*
+                NOW PLAYING TEXT
+            */
+
+            const title =
+                this.parentElement
+                    .querySelector(
+                        ".song-title"
+                    )
+                    .textContent;
+
+
+            const artist =
+                this.parentElement
+                    .querySelector(
+                        ".artist"
+                    )
+                    .textContent;
+
+
+            nowPlaying.textContent =
+                "♪ Now playing: " +
+                title +
+                " • " +
+                artist;
+
+
+            nowPlaying.classList.add(
+                "show"
+            );
+
+
+
+            /*
+                SONG FINISHED
+            */
+
+            audio.onended =
+                function() {
+
+
+                    record.classList.remove(
+                        "playing"
+                    );
+
+
+                    nowPlaying.classList.remove(
+                        "show"
+                    );
+
+
+                    currentAudio =
+                        null;
+
+
+                    currentRecord =
+                        null;
+
+                };
+
+        }
+
+    );
+
+});
+
+
+
+/*
+    EXIT
+*/
+
+function goBack() {
+
+
+    if (currentAudio) {
+
+        currentAudio.pause();
+
+        currentAudio.currentTime = 0;
+
+    }
+
+
+    window.location.href =
+        "letters.html";
+
+}
+
+
+</script>
+
+
+</body>
+</html>

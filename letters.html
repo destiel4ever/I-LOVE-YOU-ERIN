@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For You 💌</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+
+            background-image: url("Arii.gif");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            color: #5a3d52;
+            overflow: hidden;
+        }
+
+        h1 {
+            position: absolute;
+            top: 6%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            font-size: 48px;
+            white-space: nowrap;
+            z-index: 5;
+
+            color: #f7a8c4;
+        }
+
+        .envelope {
+            position: absolute;
+
+            width: 220px;
+            height: 145px;
+
+            background: #fff7fb;
+            border-radius: 12px;
+
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+
+            cursor: pointer;
+
+            transition: transform 0.3s ease;
+        }
+
+        .envelope:hover {
+            transform: scale(1.08) rotate(2deg);
+        }
+
+        .envelope::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 0;
+            height: 0;
+
+            border-left: 110px solid transparent;
+            border-right: 110px solid transparent;
+            border-top: 78px solid #f7b6d3;
+        }
+
+        .envelope::after {
+            content: "";
+
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            width: 0;
+            height: 0;
+
+            border-left: 110px solid transparent;
+            border-right: 110px solid transparent;
+            border-bottom: 73px solid #ffe5f0;
+        }
+
+        .heart {
+            position: absolute;
+
+            left: 50%;
+            top: 48%;
+
+            transform: translate(-50%, -50%);
+
+            font-size: 38px;
+
+            z-index: 2;
+        }
+
+        /* LETTER 1 */
+
+        .letter-one {
+            top: 27%;
+            left: 7%;
+
+            transform: rotate(-7deg);
+        }
+
+        /* LETTER 2 */
+
+        .letter-two {
+            top: 27%;
+            right: 7%;
+
+            transform: rotate(7deg);
+        }
+
+        /* FINAL LETTER - CENTER */
+
+        .letter-five {
+            top: 45%;
+            left: 50%;
+
+            transform: translateX(-50%) rotate(-2deg);
+
+            z-index: 3;
+        }
+
+        /* LETTER 3 */
+
+        .letter-three {
+            bottom: 7%;
+            left: 7%;
+
+            transform: rotate(7deg);
+        }
+
+        /* LETTER 4 */
+
+        .letter-four {
+            bottom: 7%;
+            right: 7%;
+
+            transform: rotate(-7deg);
+        }
+
+        /* NUMBERS */
+
+        .number {
+            position: absolute;
+
+            top: -20px;
+            left: -16px;
+
+            width: 42px;
+            height: 42px;
+
+            background: white;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: bold;
+
+            color: #d85d91;
+
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+
+            z-index: 10;
+        }
+
+        /* PHONE */
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 36px;
+                top: 5%;
+            }
+
+            .envelope {
+                width: 155px;
+                height: 105px;
+            }
+
+            .envelope::before {
+                border-left-width: 77px;
+                border-right-width: 77px;
+                border-top-width: 55px;
+            }
+
+            .envelope::after {
+                border-left-width: 77px;
+                border-right-width: 77px;
+                border-bottom-width: 52px;
+            }
+
+            .heart {
+                font-size: 28px;
+            }
+
+            .letter-one {
+                top: 21%;
+                left: 5%;
+            }
+
+            .letter-two {
+                top: 21%;
+                right: 5%;
+            }
+
+            .letter-five {
+                top: 43%;
+            }
+
+            .letter-three {
+                bottom: 6%;
+                left: 5%;
+            }
+
+            .letter-four {
+                bottom: 6%;
+                right: 5%;
+            }
+
+            .number {
+                width: 34px;
+                height: 34px;
+
+                font-size: 16px;
+
+                top: -17px;
+                left: -13px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>For You 💌</h1>
+
+
+    <!-- LETTER 1 -->
+    <div
+        class="envelope letter-one"
+        onclick="window.location.href='letter1.html'"
+    >
+        <div class="number">1</div>
+        <div class="heart">♡</div>
+    </div>
+
+
+    <!-- LETTER 2 -->
+    <div
+        class="envelope letter-two"
+        onclick="window.location.href='letter2.html'"
+    >
+        <div class="number">2</div>
+        <div class="heart">♡</div>
+    </div>
+
+
+    <!-- LETTER 5 -->
+    <div
+        class="envelope letter-five"
+        onclick="window.location.href='letter5.html'"
+    >
+        <div class="number">5</div>
+        <div class="heart">♡</div>
+    </div>
+
+
+    <!-- LETTER 3 -->
+    <div
+        class="envelope letter-three"
+        onclick="window.location.href='letter3.html'"
+    >
+        <div class="number">3</div>
+        <div class="heart">♡</div>
+    </div>
+
+
+    <!-- LETTER 4 -->
+    <div
+        class="envelope letter-four"
+        onclick="window.location.href='letter4.html'"
+    >
+        <div class="number">4</div>
+        <div class="heart">♡</div>
+    </div>
+
+</body>
+</html>

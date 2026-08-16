@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A Little Something For You 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #5a3d52;
+        }
+
+        /* =========================
+           MAIN LETTER 1 PAGE
+        ========================= */
+
+        .main-page {
+            min-height: 100vh;
+            padding: 60px 25px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffc1dc, #f7a8c4);
+        }
+
+        .main-page h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+    color: white;
+        }
+
+        .intro {
+            font-size: 18px;
+            margin-bottom: 45px;
+        }
+
+        .choices {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .choice {
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 25px;
+            padding: 35px 20px;
+            min-height: 190px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .choice:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Cute non-emoji icons */
+
+        .choice .icon {
+            font-size: 58px;
+            margin-bottom: 18px;
+            color: #f08db4;
+            font-family: Georgia, serif;
+        }
+
+        .choice h2 {
+            font-size: 19px;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* =========================
+           INDIVIDUAL LETTER PAGES
+        ========================= */
+
+        .letter-page {
+            display: none;
+
+            min-height: 100vh;
+            padding: 55px 25px;
+
+            text-align: center;
+
+            background-image: url("ari.gif");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            background-attachment: fixed;
+        }
+
+        .letter-page.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .letter-page h1 {
+            font-size: 38px;
+            margin-bottom: 25px;
+            color: #f7a8c4;
+        }
+
+        .letter-decoration {
+            font-size: 65px;
+            margin-bottom: 20px;
+            color: #f08db4;
+            font-family: Georgia, serif;
+        }
+
+        .letter-card {
+            background: rgba(255, 255, 255, 0.91);
+
+            width: 90%;
+            max-width: 650px;
+
+            padding: 35px;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.18);
+
+            font-size: 18px;
+            line-height: 1.7;
+
+            text-align: left;
+        }
+
+        .letter-card p {
+            margin-bottom: 22px;
+        }
+
+        .back-button {
+            margin-top: 30px;
+
+            padding: 13px 28px;
+
+            border: none;
+            border-radius: 25px;
+
+            background: white;
+            color: #d85d91;
+
+            font-size: 17px;
+
+            cursor: pointer;
+
+            box-shadow: 0 7px 18px rgba(0,0,0,0.15);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .back-button:hover {
+            transform: scale(1.06);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+        }
+
+        /* =========================
+           PHONE SCREEN
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .main-page {
+                padding: 45px 20px;
+            }
+
+            .main-page h1 {
+                font-size: 34px;
+            }
+
+            .choices {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .choice {
+                min-height: 160px;
+            }
+
+            .letter-page {
+                padding: 40px 18px;
+            }
+
+            .letter-page h1 {
+                font-size: 30px;
+            }
+
+            .letter-card {
+                width: 95%;
+                padding: 25px;
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         MAIN LETTER 1 MENU
+    ========================= -->
+
+    <div class="main-page" id="mainPage">
+
+        <h1>A Little Something For You</h1>
+
+        <p class="intro">
+            Click whichever one you need right now. &lt;3
+        </p>
+
+        <div class="choices">
+
+            <div class="choice" onclick="openLetter('badDay')">
+                <div class="icon">♡</div>
+
+                <h2>
+                    Click me when you're having a bad day
+                </h2>
+            </div>
+
+
+            <div class="choice" onclick="openLetter('nobodyGetsMe')">
+                <div class="icon">☁</div>
+
+                <h2>
+                    Click me when you feel like nobody gets you
+                </h2>
+            </div>
+
+
+            <div class="choice" onclick="openLetter('motivation')">
+                <div class="icon">✦</div>
+
+                <h2>
+                    Click me when you need motivation
+                </h2>
+            </div>
+
+
+            <div class="choice" onclick="openLetter('missMe')">
+                <div class="icon">♡</div>
+
+                <h2>
+                    Click me when you miss me
+                </h2>
+            </div>
+
+        </div>
+
+
+        <button class="back-button" onclick="goBackToLetters()">
+            ← Exit
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         BAD DAY
+    ========================= -->
+
+    <div class="letter-page" id="badDay">
+
+        <h1>For when you're having a bad day</h1>
+
+        <div class="letter-decoration">
+            ♡
+        </div>
+
+        <div class="letter-card">
+
+            <p>
+                I know I can't magically fix whatever's making your day bad,
+                but I hope this makes it a little better.
+            </p>
+
+            <p>
+                You don't have to pretend you're okay all the time,
+                especially not with me. If you need someone to listen to you,
+                I'm here. If you need someone to complain to, im here.
+                If you need someone to cheer you up, I'm here.
+                I'm always here (this is also kind of a threat xx)
+            </p>
+
+            <p>
+                And honestly you're like the strongest person I know,
+                and what I also know is that you'll always pull through
+                and make it (because you're with me👉👈)
+            </p>
+
+        </div>
+
+        <button class="back-button" onclick="goBackToMain()">
+            ← Back
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         NOBODY GETS ME
+    ========================= -->
+
+    <div class="letter-page" id="nobodyGetsMe">
+
+        <h1>For when you feel like nobody gets you</h1>
+
+        <div class="letter-decoration">
+            ♡
+        </div>
+
+        <div class="letter-card">
+
+            <p>
+                I know sometimes it feels like nobody really understands you,
+                and I can't promise I'll always understand everything you're
+                feeling either, but i can promise to try!!
+            </p>
+
+            <p>
+                You don't have to explain yourself perfectly to me.
+                You don't have to act a certain way or pretend you're fine
+                just so other people don't worry about you.
+                You can just be you, especially around me &lt;3
+            </p>
+
+            <p>
+                And even after everything we've been through I'm really glad
+                we're back as bestfriends again.
+                I don't ever want you to feel like you're alone in everything.
+            </p>
+
+            <p>
+                You've got me bitch smile🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳
+            </p>
+
+        </div>
+
+        <button class="back-button" onclick="goBackToMain()">
+            ← Back
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         MOTIVATION
+    ========================= -->
+
+    <div class="letter-page" id="motivation">
+
+        <h1>For when you need motivation</h1>
+
+        <div class="letter-decoration">
+            ✦
+        </div>
+
+        <div class="letter-card">
+
+            <p>
+                Whatever you're trying to do right now, I believe you can do it,
+                just like how you do everything else so perfectly.
+                Even if you're convinced you can't, even if you've messed up,
+                even if you feel like you're behind everyone else,
+                none of that means you should give up!
+            </p>
+
+            <p>
+                I'll always support you and have your back with whatever
+                you need/want or trying to do.
+            </p>
+
+            <p>
+                You got this. 💗
+            </p>
+
+            <p>
+                (and yes this is directed at you trying to get fit)
+                (even tho ur already snatched as fuck)
+            </p>
+
+        </div>
+
+        <button class="back-button" onclick="goBackToMain()">
+            ← Back
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         MISS ME
+    ========================= -->
+
+    <div class="letter-page" id="missMe">
+
+        <h1>For when you miss me</h1>
+
+        <div class="letter-decoration">
+            ♡
+        </div>
+
+        <div class="letter-card">
+
+            <p>
+                You miss me? Obviously cuz im the best✌️✌️✌️✌️
+                (ok im kidding dont kill me)
+            </p>
+
+            <p>
+                But seriously, if you're reading this because you miss me,
+                I hope you remember that no amount of distance or time can
+                change the fact that I'm always going to be there for you,
+                even when I'm not physically there. I'll always be with you
+                in some way, spiritually and all that stuff
+                (and yes i stole ur line)
+            </p>
+
+            <p>
+                We've had our ups (going uppp?) and downs,
+                it's not like we're the perfect pair (get the ref pls)
+                but ik we're perfect for each other.
+                I'm really really glad we found our way back to each other
+                (again)
+            </p>
+
+            <p>
+                I appreciate you more than I probably say,
+                and I don't ever want to take our friendship for granted again.
+                So if you miss me just remember that I'm most likely missing
+                you too😸
+            </p>
+
+        </div>
+
+        <button class="back-button" onclick="goBackToMain()">
+            ← Back
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function openLetter(letterId) {
+
+            document.getElementById("mainPage").style.display = "none";
+
+            document.querySelectorAll(".letter-page").forEach(function(page) {
+                page.classList.remove("active");
+            });
+
+            document.getElementById(letterId).classList.add("active");
+
+            window.scrollTo(0, 0);
+        }
+
+
+        function goBackToMain() {
+
+            document.querySelectorAll(".letter-page").forEach(function(page) {
+                page.classList.remove("active");
+            });
+
+            document.getElementById("mainPage").style.display = "block";
+
+            window.scrollTo(0, 0);
+        }
+
+
+        function goBackToLetters() {
+
+            window.location.href = "letters.html";
+
+        }
+
+    </script>
+
+</body>
+</html>

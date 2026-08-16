@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>The Final Letter 💌</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background-image: url("Dog.gif");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            color: #704c63;
+
+            overflow-x: hidden;
+        }
+
+
+        /* SOFT OVERLAY */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(255, 220, 238, 0.45);
+
+            z-index: -1;
+        }
+
+
+        /* SPARKLES */
+
+        .sparkle {
+
+            position: fixed;
+
+            color: white;
+
+            font-size: 22px;
+
+            opacity: .8;
+
+            pointer-events: none;
+
+            animation:
+                floatSparkle 4s ease-in-out infinite;
+
+            z-index: 1;
+        }
+
+        .s1 {
+            left: 8%;
+            top: 18%;
+        }
+
+        .s2 {
+            left: 88%;
+            top: 24%;
+            animation-delay: 1s;
+        }
+
+        .s3 {
+            left: 17%;
+            top: 75%;
+            animation-delay: 2s;
+        }
+
+        .s4 {
+            left: 80%;
+            top: 70%;
+            animation-delay: .5s;
+        }
+
+        .s5 {
+            left: 48%;
+            top: 10%;
+            animation-delay: 1.5s;
+        }
+
+
+        @keyframes floatSparkle {
+
+            0%, 100% {
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+                opacity: .55;
+            }
+
+            50% {
+
+                transform:
+                    translateY(-12px)
+                    scale(1.2);
+
+                opacity: 1;
+            }
+        }
+
+
+        /* OPENING */
+
+        #opening {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+
+        #opening h1 {
+
+            color: white;
+
+            font-size: 38px;
+
+            margin-bottom: 28px;
+
+            text-shadow:
+                0 3px 12px
+                rgba(70,30,60,.5);
+        }
+
+
+        .envelope {
+
+            width: 245px;
+            height: 165px;
+
+            position: relative;
+
+            background: #fff8fc;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 18px 45px
+                rgba(70,25,60,.25);
+
+            cursor: pointer;
+
+            transition:
+                transform .3s ease;
+        }
+
+
+        .envelope:hover {
+
+            transform:
+                scale(1.07)
+                rotate(1deg);
+        }
+
+
+        .envelope::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 0;
+            height: 0;
+
+            border-left:
+                122px solid transparent;
+
+            border-right:
+                122px solid transparent;
+
+            border-top:
+                92px solid #f6b3d0;
+        }
+
+
+        .envelope::after {
+
+            content: "💗";
+
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            font-size: 45px;
+
+            z-index: 5;
+        }
+
+
+        .openText {
+
+            position: absolute;
+
+            width: 100%;
+
+            bottom: -42px;
+
+            color: white;
+
+            font-size: 15px;
+
+            text-shadow:
+                0 2px 8px
+                rgba(70,30,60,.5);
+        }
+
+
+        /* LETTER */
+
+        #letter {
+
+            display: none;
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            padding: 55px 20px 110px;
+        }
+
+
+        .letterPaper {
+
+            width: 92%;
+
+            max-width: 780px;
+
+            margin: auto;
+
+            padding: 42px 45px;
+
+            background:
+                rgba(255, 250, 253, .94);
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 20px 55px
+                rgba(70,25,60,.25);
+
+            animation:
+                letterAppear .8s ease;
+        }
+
+
+        @keyframes letterAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(35px)
+                    scale(.97);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        .letterHeader {
+
+            text-align: center;
+
+            color: #e27aa8;
+
+            font-size: 34px;
+
+            margin:
+                0 0 30px;
+
+            line-height: 1.25;
+        }
+
+
+        .letterText {
+
+            font-size: 17px;
+
+            line-height: 1.75;
+
+            color: #704c63;
+
+            text-align: left;
+        }
+
+
+        .letterText p {
+
+            margin:
+                0 0 22px;
+        }
+
+
+        .littleHeart {
+
+            text-align: center;
+
+            font-size: 25px;
+
+            margin: 25px 0;
+        }
+
+
+        .signature {
+
+            text-align: center;
+
+            margin-top: 28px;
+
+            color: #d86698;
+
+            font-size: 19px;
+
+            font-weight: bold;
+        }
+
+
+        /* FINAL MESSAGE */
+
+        #finalScreen {
+
+            display: none;
+
+            min-height: 100vh;
+
+            padding: 40px 20px;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                rgba(255,225,242,.82);
+
+            animation:
+                finalAppear 1s ease;
+        }
+
+
+        @keyframes finalAppear {
+
+            from {
+
+                opacity: 0;
+            }
+
+            to {
+
+                opacity: 1;
+            }
+        }
+
+
+        #finalScreen h2 {
+
+            color: #d86698;
+
+            font-size: 34px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .finalText {
+
+            color: #80506d;
+
+            font-size: 18px;
+
+            margin-bottom: 25px;
+        }
+
+
+        #wave {
+
+            width: 280px;
+
+            max-width: 80vw;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(60,20,60,.25);
+
+            animation:
+                waveAppear 1s ease;
+        }
+
+
+        @keyframes waveAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(.8)
+                    translateY(20px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
+            }
+        }
+
+
+        .finalHeart {
+
+            font-size: 34px;
+
+            margin: 20px 0 10px;
+
+            animation:
+                heartbeat 1.5s infinite;
+        }
+
+
+        @keyframes heartbeat {
+
+            0%, 100% {
+
+                transform: scale(1);
+            }
+
+            50% {
+
+                transform: scale(1.15);
+            }
+        }
+
+
+        /* BUTTONS */
+
+        button {
+
+            border: none;
+
+            border-radius: 25px;
+
+            background:
+                rgba(255,255,255,.95);
+
+            color: #d86698;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            padding:
+                10px 26px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 20px
+                rgba(60,20,60,.18);
+
+            transition:
+                transform .25s ease;
+        }
+
+
+        button:hover {
+
+            transform:
+                scale(1.06);
+        }
+
+
+        #finishButton {
+
+            margin-top: 35px;
+        }
+
+
+        #exit {
+
+            position: fixed;
+
+            bottom: 15px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            z-index: 100;
+
+            display: none;
+        }
+
+
+        /* PHONE */
+
+        @media(max-width:600px) {
+
+            #opening h1 {
+
+                font-size: 30px;
+            }
+
+
+            .envelope {
+
+                width: 210px;
+                height: 145px;
+            }
+
+
+            .envelope::before {
+
+                border-left-width: 105px;
+
+                border-right-width: 105px;
+
+                border-top-width: 80px;
+            }
+
+
+            .letterPaper {
+
+                width: 94%;
+
+                padding:
+                    32px 25px;
+            }
+
+
+            .letterHeader {
+
+                font-size: 29px;
+            }
+
+
+            .letterText {
+
+                font-size: 16px;
+
+                line-height: 1.7;
+            }
+
+
+            #finalScreen h2 {
+
+                font-size: 29px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- SPARKLES -->
+
+<div class="sparkle s1">✦</div>
+<div class="sparkle s2">✧</div>
+<div class="sparkle s3">✦</div>
+<div class="sparkle s4">✧</div>
+<div class="sparkle s5">♡</div>
+
+
+
+<!-- OPENING -->
+
+<section id="opening">
+
+    <h1>
+        The Final Letter 💌
+    </h1>
+
+
+    <div
+        class="envelope"
+        onclick="openLetter()"
+    >
+
+        <div class="openText">
+            click to open 💗
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- LETTER -->
+
+<section id="letter">
+
+    <div class="letterPaper">
+
+
+        <h1 class="letterHeader">
+            Hello!! You've reached your final destination. 💗
+        </h1>
+
+
+        <div class="letterText">
+
+
+            <p>
+                Happy belated anniversary! I hope many more years come for us as bestfriends, because I know we can get through anything as long as we stay strong and stick together.
+            </p>
+
+
+            <p>
+                I love you so much Erin, and I just wanna say that every single day of these past two years has been nothing but happiness and joy with you. I always find myself smiling or laughing with you, even at the toughest times, because you make my life so much better.
+            </p>
+
+
+            <div class="littleHeart">
+                💗 ✦ 💗
+            </div>
+
+
+            <p>
+                This website wasn't made just to celebrate our anniversary, but also because I wanted to show you how much I appreciate you. You're the best and only bestfriend I have, and honestly, I wouldn't want it any other way.
+            </p>
+
+
+            <p>
+                You've done so much for me, and even if I don't always say it, I really do appreciate everything you've done and everything you are. I'm really glad we found our way back to each other, and I hope we stay bestfriends for a very long time.
+            </p>
+
+
+            <p>
+                Anyways! That's all :)
+            </p>
+
+
+            <div class="signature">
+                I love you always 💗
+            </div>
+
+
+        </div>
+
+
+        <div style="text-align:center;">
+
+            <button
+                id="finishButton"
+                onclick="finishLetter()"
+            >
+                Continue ✨
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- FINAL SCREEN -->
+
+<section id="finalScreen">
+
+
+    <h2>
+        You made it to the end 💗
+    </h2>
+
+
+    <div class="finalText">
+        And yes this is the final goodbye i promise
+    </div>
+
+
+    <img
+        id="wave"
+        src="Wave.gif"
+        alt="Wave"
+    >
+
+
+    <div class="finalHeart">
+        💗
+    </div>
+
+
+    <div class="finalText">
+        Happy anniversary, Erin. 🫶
+    </div>
+
+
+    <button onclick="goBack()">
+        ← Back to Letters
+    </button>
+
+
+</section>
+
+
+
+<!-- EXIT -->
+
+<button
+    id="exit"
+    onclick="goBack()"
+>
+    ← Exit Letter
+</button>
+
+
+
+<script>
+
+
+function openLetter() {
+
+    document.getElementById("opening").style.display =
+        "none";
+
+    document.getElementById("letter").style.display =
+        "block";
+
+    document.getElementById("exit").style.display =
+        "block";
+
+    window.scrollTo(0, 0);
+}
+
+
+
+function finishLetter() {
+
+    document.getElementById("letter").style.display =
+        "none";
+
+    document.getElementById("exit").style.display =
+        "none";
+
+    document.getElementById("finalScreen").style.display =
+        "flex";
+
+    window.scrollTo(0, 0);
+}
+
+
+
+function goBack() {
+
+    window.location.href =
+        "letters.html";
+
+}
+
+
+</script>
+
+
+</body>
+</html>

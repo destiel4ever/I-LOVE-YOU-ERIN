@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Obstacle Course!</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background-image: url("heaven.jpg");
+            background-size: cover;
+            background-position: center;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 7px 0 0;
+            color: white;
+            font-size: 30px;
+            text-shadow: 0 3px 10px rgba(60,30,90,.6);
+        }
+
+        #instructions {
+            text-align: center;
+            color: white;
+            font-size: 13px;
+            margin: 1px 0 4px;
+            text-shadow: 0 2px 7px rgba(60,30,90,.7);
+        }
+
+        #hearts {
+            text-align: center;
+            height: 29px;
+            font-size: 23px;
+        }
+
+        #game {
+            position: relative;
+            width: 96vw;
+            height: 70vh;
+            min-height: 400px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 28px;
+            border: 2px solid rgba(255,255,255,.75);
+            box-shadow: 0 18px 50px rgba(50,20,80,.3);
+        }
+
+        #world {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12000px;
+            height: 100%;
+        }
+
+        .cloud {
+            position: absolute;
+            color: white;
+            opacity: .45;
+            font-size: 60px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .cloud1 {
+            left: 900px;
+            top: 12%;
+        }
+
+        .cloud2 {
+            left: 3500px;
+            top: 22%;
+            font-size: 42px;
+        }
+
+        .cloud3 {
+            left: 7200px;
+            top: 9%;
+            font-size: 70px;
+        }
+
+        .cloud4 {
+            left: 9800px;
+            top: 18%;
+            font-size: 55px;
+        }
+
+        .sparkle {
+            position: absolute;
+            color: white;
+            font-size: 22px;
+            opacity: .7;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .ground {
+            position: absolute;
+            height: 80px;
+            background: rgba(255,255,255,.42);
+            border-top: 3px solid rgba(255,255,255,.85);
+            z-index: 8;
+        }
+
+        .platform {
+            position: absolute;
+            height: 28px;
+            border-radius: 15px;
+            background: rgba(255,255,255,.9);
+            border: 2px solid rgba(255,255,255,.95);
+            box-shadow:
+                0 8px 15px rgba(60,30,90,.18),
+                inset 0 3px 5px rgba(255,255,255,.8);
+            z-index: 10;
+        }
+
+        .platform::after {
+            content: "✦";
+            position: absolute;
+            color: rgba(255,255,255,.75);
+            right: 12px;
+            top: -22px;
+            font-size: 15px;
+        }
+
+        .movingPlatform {
+            background: rgba(255,231,248,.95);
+        }
+
+        #melody {
+            position: absolute;
+            width: 115px;
+            height: 115px;
+            object-fit: contain;
+            z-index: 30;
+            pointer-events: none;
+            filter: drop-shadow(0 7px 8px rgba(60,30,90,.35));
+        }
+
+        .fire {
+            position: absolute;
+            font-size: 47px;
+            width: 58px;
+            height: 58px;
+            z-index: 20;
+        }
+
+        .spikes {
+            position: absolute;
+            font-size: 39px;
+            z-index: 20;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 25px;
+            z-index: 11;
+        }
+
+        #light {
+            position: absolute;
+            width: 145px;
+            height: 145px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 70px;
+            background: rgba(255,255,255,.45);
+            box-shadow:
+                0 0 25px white,
+                0 0 60px white,
+                0 0 100px rgba(255,255,255,.8);
+            z-index: 12;
+            animation: glow 2s infinite ease-in-out;
+        }
+
+        @keyframes glow {
+            0%,100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        #progressBox {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45%;
+            height: 11px;
+            border-radius: 20px;
+            background: rgba(255,255,255,.35);
+            overflow: hidden;
+            z-index: 50;
+        }
+
+        #progress {
+            height: 100%;
+            width: 0%;
+            background: white;
+            border-radius: 20px;
+        }
+
+        #controls {
+            position: relative;
+            width: 96vw;
+            height: 75px;
+            margin: 8px auto 0;
+        }
+
+        .control {
+            position: absolute;
+            bottom: 0;
+            width: 72px;
+            height: 58px;
+            border: none;
+            border-radius: 19px;
+            background: rgba(255,255,255,.95);
+            color: #d85d91;
+            font-size: 27px;
+            font-weight: bold;
+            box-shadow: 0 8px 17px rgba(50,20,60,.2);
+            touch-action: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #left {
+            left: 0;
+        }
+
+        #right {
+            left: 82px;
+        }
+
+        #jump {
+            right: 0;
+            width: 105px;
+            font-size: 16px;
+        }
+
+        .control:active {
+            transform: scale(.92);
+        }
+
+        #exit {
+            display: block;
+            margin: 6px auto;
+            padding: 7px 24px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255,255,255,.95);
+            color: #d85d91;
+        }
+
+        #win {
+            position: fixed;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(255,225,243,.97);
+            z-index: 100;
+        }
+
+        #win h2 {
+            color: #d85d91;
+            font-size: 31px;
+            margin: 10px;
+        }
+
+        #quote {
+            max-width: 85%;
+            color: #80506d;
+            font-size: 22px;
+            line-height: 1.5;
+            margin: 5px 0 18px;
+        }
+
+        #kiss {
+            width: 285px;
+            max-width: 78vw;
+            border-radius: 24px;
+            box-shadow: 0 18px 40px rgba(60,20,70,.25);
+        }
+
+        #winExit {
+            margin-top: 15px;
+            padding: 8px 25px;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            color: #d85d91;
+        }
+              @media(max-width:600px) {
+
+            h1 {
+                font-size: 26px;
+            }
+
+            #game {
+                width: 97vw;
+                height: 67vh;
+            }
+
+            #melody {
+                width: 115px;
+                height: 115px;
+            }
+
+            .control {
+                width: 72px;
+                height: 53px;
+            }
+
+            #jump {
+                width: 92px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>The Obstacle Course!</h1>
+
+<div id="instructions">
+    Hold ◀ or ▶ to move • Tap JUMP to jump • Don't fall! ✨
+</div>
+
+<div id="hearts">
+    💗 💗 💗
+</div>
+
+<div id="game">
+
+    <div id="progressBox">
+        <div id="progress"></div>
+    </div>
+
+    <div class="cloud cloud1">☁️</div>
+    <div class="cloud cloud2">☁️</div>
+    <div class="cloud cloud3">☁️</div>
+    <div class="cloud cloud4">☁️</div>
+
+    <div class="sparkle" style="left:700px;top:25%;">✦</div>
+    <div class="sparkle" style="left:1800px;top:15%;">✧</div>
+    <div class="sparkle" style="left:3100px;top:28%;">✦</div>
+    <div class="sparkle" style="left:4700px;top:17%;">✧</div>
+    <div class="sparkle" style="left:6200px;top:27%;">✦</div>
+    <div class="sparkle" style="left:7900px;top:14%;">✧</div>
+    <div class="sparkle" style="left:9400px;top:26%;">✦</div>
+
+    <div id="world">
+
+        <!-- START -->
+        <div class="ground"
+             style="left:0;bottom:0;width:900px;"></div>
+
+        <div class="platform"
+             style="left:500px;bottom:145px;width:180px;"></div>
+
+        <div class="platform"
+             style="left:760px;bottom:205px;width:160px;"></div>
+
+
+        <!-- SECTION 2 -->
+        <div class="ground"
+             style="left:1000px;bottom:0;width:850px;"></div>
+
+        <div class="platform"
+             style="left:1180px;bottom:150px;width:180px;"></div>
+
+        <div class="platform"
+             style="left:1460px;bottom:220px;width:170px;"></div>
+
+        <div class="platform"
+             style="left:1700px;bottom:145px;width:170px;"></div>
+
+
+        <!-- SECTION 3 -->
+        <div class="ground"
+             style="left:1900px;bottom:0;width:700px;"></div>
+
+        <div class="platform"
+             style="left:2070px;bottom:150px;width:180px;"></div>
+
+        <div class="platform"
+             style="left:2320px;bottom:220px;width:180px;"></div>
+
+        <div class="platform"
+             style="left:2520px;bottom:150px;width:180px;"></div>
+
+
+        <!-- MOVING PLATFORM AREA -->
+        <div class="platform"
+             style="left:2750px;bottom:130px;width:170px;"></div>
+
+        <div class="platform movingPlatform"
+             id="moving1"
+             style="left:3050px;bottom:190px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:3350px;bottom:145px;width:180px;"></div>
+
+        <div class="platform movingPlatform"
+             id="moving2"
+             style="left:3650px;bottom:210px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:3950px;bottom:150px;width:190px;"></div>
+
+
+        <!-- SECTION 5 -->
+        <div class="ground"
+             style="left:4200px;bottom:0;width:900px;"></div>
+
+        <div class="platform"
+             style="left:4450px;bottom:160px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:4750px;bottom:230px;width:180px;"></div>
+
+        <div class="platform"
+             style="left:5000px;bottom:155px;width:190px;"></div>
+
+
+        <!-- SECTION 6 -->
+        <div class="platform movingPlatform"
+             id="moving3"
+             style="left:5350px;bottom:190px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:5650px;bottom:150px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:5920px;bottom:230px;width:180px;"></div>
+
+        <div class="platform movingPlatform"
+             id="moving4"
+             style="left:6200px;bottom:175px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:6500px;bottom:150px;width:190px;"></div>
+
+
+        <!-- SECTION 7 -->
+        <div class="ground"
+             style="left:6750px;bottom:0;width:850px;"></div>
+
+        <div class="platform"
+             style="left:7000px;bottom:160px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:7300px;bottom:235px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:7570px;bottom:160px;width:190px;"></div>
+
+
+        <!-- SECTION 8 -->
+        <div class="platform"
+             style="left:7850px;bottom:150px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:8120px;bottom:220px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:8400px;bottom:150px;width:200px;"></div>
+
+        <div class="ground"
+             style="left:8700px;bottom:0;width:650px;"></div>
+
+
+        <!-- FINAL SECTION -->
+        <div class="platform"
+             style="left:9000px;bottom:160px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:9280px;bottom:230px;width:190px;"></div>
+
+        <div class="platform"
+             style="left:9560px;bottom:160px;width:200px;"></div>
+
+        <div class="platform"
+             style="left:9850px;bottom:230px;width:200px;"></div>
+
+        <div class="ground"
+             style="left:10150px;bottom:0;width:750px;"></div>
+
+
+        <!-- LIGHT -->
+        <div id="light"
+             style="left:10700px;bottom:180px;">
+            ✨
+        </div>
+
+
+        <!-- DECORATION -->
+        <div class="flower" style="left:300px;bottom:80px;">🌸</div>
+        <div class="flower" style="left:700px;bottom:80px;">🌷</div>
+        <div class="flower" style="left:1250px;bottom:80px;">🌸</div>
+        <div class="flower" style="left:1750px;bottom:80px;">🌷</div>
+        <div class="flower" style="left:2150px;bottom:80px;">🌸</div>
+        <div class="flower" style="left:4500px;bottom:80px;">🌷</div>
+        <div class="flower" style="left:5150px;bottom:80px;">🌸</div>
+        <div class="flower" style="left:6900px;bottom:80px;">🌷</div>
+        <div class="flower" style="left:8800px;bottom:80px;">🌸</div>
+        <div class="flower" style="left:10300px;bottom:80px;">🌷</div>
+
+
+        <!-- OBSTACLES -->
+        <div class="fire" style="left:820px;bottom:80px;">🔥</div>
+
+        <div class="fire" style="left:1330px;bottom:80px;">🔥</div>
+
+        <div class="spikes" style="left:1570px;bottom:80px;">
+            🔺🔺
+        </div>
+
+        <div class="fire" style="left:2200px;bottom:80px;">🔥</div>
+
+        <div class="spikes" style="left:2380px;bottom:80px;">
+            🔺🔺
+        </div>
+
+        <div class="fire" style="left:4550px;bottom:80px;">🔥</div>
+
+        <div class="fire" style="left:5100px;bottom:80px;">🔥</div>
+
+        <div class="spikes" style="left:7200px;bottom:80px;">
+            🔺🔺
+        </div>
+
+        <div class="fire" style="left:7450px;bottom:80px;">🔥</div>
+
+        <div class="spikes" style="left:8250px;bottom:80px;">
+            🔺🔺🔺
+        </div>
+
+        <div class="fire" style="left:9150px;bottom:80px;">🔥</div>
+
+        <div class="spikes" style="left:9650px;bottom:80px;">
+            🔺🔺
+        </div>
+
+
+        <img
+            id="melody"
+            src="melody.png"
+            alt="Melody"
+            draggable="false"
+        >
+
+    </div>
+</div>
+
+
+<div id="controls">
+
+    <button class="control" id="left">
+        ◀
+    </button>
+
+    <button class="control" id="right">
+        ▶
+    </button>
+
+    <button class="control" id="jump">
+        JUMP
+    </button>
+
+</div>
+
+
+<button id="exit" onclick="goBack()">
+    ← Exit Letter
+</button>
+
+
+<div id="win">
+
+    <h2>
+        You made it... ✨
+    </h2>
+
+    <div id="quote">
+        You won't see the light unless you keep going. 💗
+    </div>
+
+    <img
+        id="kiss"
+        src="kiss.gif"
+        alt="Ariana"
+    >
+
+    <p>
+        You reached the end. 👑
+    </p>
+
+    <button id="winExit" onclick="goBack()">
+        ← Exit Letter
+    </button>
+
+</div>
+<script>
+
+const game = document.getElementById("game");
+const world = document.getElementById("world");
+const melody = document.getElementById("melody");
+const hearts = document.getElementById("hearts");
+const progress = document.getElementById("progress");
+const win = document.getElementById("win");
+
+const leftButton = document.getElementById("left");
+const rightButton = document.getElementById("right");
+const jumpButton = document.getElementById("jump");
+
+let playerX = 70;
+let playerY = 80;
+
+let velocityY = 0;
+
+const gravity = 0.58;
+const jumpPower = 12.5;
+const speed = 2.2;
+
+let jumping = false;
+
+let movingLeft = false;
+let movingRight = false;
+
+let health = 3;
+
+let cameraX = 0;
+
+let won = false;
+
+let invincible = false;
+
+const worldLength = 12000;
+
+
+/* =========================
+   HEARTS
+========================= */
+
+function updateHearts() {
+
+    let result = "";
+
+    for (let i = 0; i < 3; i++) {
+
+        if (i < health) {
+            result += "💗 ";
+        } else {
+            result += "🖤 ";
+        }
+
+    }
+
+    hearts.innerHTML = result;
+}
+
+
+/* =========================
+   MOVING PLATFORMS
+========================= */
+
+const movingPlatforms = [
+
+    {
+        element: document.getElementById("moving1"),
+        startX: 3050,
+        range: 130,
+        speed: 0.010,
+        time: 0,
+        previousX: 3050
+    },
+
+    {
+        element: document.getElementById("moving2"),
+        startX: 3650,
+        range: 130,
+        speed: 0.009,
+        time: 2,
+        previousX: 3650
+    },
+
+    {
+        element: document.getElementById("moving3"),
+        startX: 5350,
+        range: 140,
+        speed: 0.009,
+        time: 0,
+        previousX: 5350
+    },
+
+    {
+        element: document.getElementById("moving4"),
+        startX: 6200,
+        range: 130,
+        speed: 0.010,
+        time: 2,
+        previousX: 6200
+    }
+
+];
+
+
+function updateMovingPlatforms() {
+
+    movingPlatforms.forEach(platform => {
+
+        const oldX = platform.previousX;
+
+        platform.time += platform.speed;
+
+        const newX =
+            platform.startX +
+            Math.sin(platform.time) *
+            platform.range;
+
+        platform.element.style.left =
+            newX + "px";
+
+        /*
+         * If Melody is standing on this platform,
+         * move her together with it.
+         */
+
+        const platformLeft = newX;
+        const platformRight =
+            newX + platform.element.offsetWidth;
+
+        const playerLeft = playerX + 18;
+        const playerRight = playerX + 88;
+
+        const platformTop =
+            parseFloat(
+                window.getComputedStyle(
+                    platform.element
+                ).bottom
+            ) + platform.element.offsetHeight;
+
+        const standingOnPlatform =
+            Math.abs(playerY - platformTop) < 3 &&
+            playerRight > platformLeft &&
+            playerLeft < platformRight &&
+            !jumping;
+
+        if (standingOnPlatform) {
+
+            playerX += newX - oldX;
+
+        }
+
+        platform.previousX = newX;
+
+    });
+
+}
+
+
+/* =========================
+   PLAYER RECTANGLE
+========================= */
+
+function playerRect() {
+
+    return {
+
+        left: playerX + 18,
+        right: playerX + 88,
+
+        bottom: playerY,
+        top: playerY + 90
+
+    };
+
+}
+
+
+/* =========================
+   PLATFORM DETECTION
+========================= */
+
+function findPlatformBelow() {
+
+    const player = playerRect();
+
+    let highestPlatform = -Infinity;
+
+    const platforms =
+        document.querySelectorAll(
+            ".platform, .ground"
+        );
+
+    platforms.forEach(platform => {
+
+        const style =
+            window.getComputedStyle(platform);
+
+        const left =
+            parseFloat(style.left);
+
+        const bottom =
+            parseFloat(style.bottom);
+
+        const width =
+            platform.offsetWidth;
+
+        const height =
+            platform.offsetHeight;
+
+        const right =
+            left + width;
+
+        const top =
+            bottom + height;
+
+        const overlap =
+            player.right > left &&
+            player.left < right;
+
+        if (!overlap) {
+            return;
+        }
+
+        /*
+         * Only allow landing while falling.
+         */
+
+        const distance =
+            player.bottom - top;
+
+        if (
+            distance >= -18 &&
+            distance <= 25 &&
+            top > highestPlatform
+        ) {
+
+            highestPlatform = top;
+
+        }
+
+    });
+
+    return highestPlatform;
+
+}
+
+
+/* =========================
+   JUMP
+========================= */
+
+function jump() {
+
+    if (!jumping) {
+
+        jumping = true;
+
+        velocityY = jumpPower;
+
+    }
+
+}
+
+
+/* =========================
+   PHYSICS
+========================= */
+
+function updatePhysics() {
+
+    velocityY -= gravity;
+
+    playerY += velocityY;
+
+    const platform =
+        findPlatformBelow();
+
+    if (
+        platform !== -Infinity &&
+        velocityY <= 0 &&
+        playerY <= platform
+    ) {
+
+        playerY = platform;
+
+        velocityY = 0;
+
+        jumping = false;
+
+    }
+
+    /*
+     * VOID
+     *
+     * Once Melody falls below this point,
+     * immediately respawn her safely.
+     */
+
+    if (playerY < -220) {
+
+        loseHeart();
+
+    }
+
+}
+
+
+/* =========================
+   MOVEMENT
+========================= */
+
+function movePlayer() {
+
+    if (movingLeft) {
+        playerX -= speed;
+    }
+
+    if (movingRight) {
+        playerX += speed;
+    }
+
+    if (playerX < 0) {
+        playerX = 0;
+    }
+
+    if (
+        playerX >
+        worldLength - 120
+    ) {
+
+        playerX =
+            worldLength - 120;
+
+    }
+
+}
+
+
+/* =========================
+   DRAW PLAYER
+========================= */
+
+function updatePlayer() {
+
+    melody.style.left =
+        playerX + "px";
+
+    melody.style.bottom =
+        playerY + "px";
+
+}
+
+
+/* =========================
+   CAMERA
+========================= */
+
+function updateCamera() {
+
+    const screenWidth =
+        game.clientWidth;
+
+    let targetCamera =
+        playerX -
+        screenWidth * 0.35;
+
+    if (targetCamera < 0) {
+        targetCamera = 0;
+    }
+
+    const maximumCamera =
+        worldLength -
+        screenWidth;
+
+    if (
+        targetCamera >
+        maximumCamera
+    ) {
+
+        targetCamera =
+            maximumCamera;
+
+    }
+
+    cameraX +=
+        (
+            targetCamera -
+            cameraX
+        ) * 0.10;
+
+    world.style.transform =
+        "translateX(" +
+        (-cameraX) +
+        "px)";
+
+}
+
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+function updateProgress() {
+
+    const percentage =
+        Math.min(
+            100,
+            (playerX / 10700) * 100
+        );
+
+    progress.style.width =
+        percentage + "%";
+
+}
+
+
+/* =========================
+   DAMAGE
+========================= */
+
+function loseHeart() {
+
+    if (invincible || won) {
+        return;
+    }
+
+    invincible = true;
+
+    health--;
+
+    updateHearts();
+
+    /*
+     * IMPORTANT:
+     * Reset ALL falling/movement physics
+     * before placing Melody back on the ground.
+     */
+
+    velocityY = 0;
+
+    jumping = false;
+
+    movingLeft = false;
+    movingRight = false;
+
+    /*
+     * Respawn slightly before the dangerous
+     * section instead of exactly where she died.
+     */
+
+    playerX =
+        Math.max(
+            70,
+            playerX - 250
+        );
+
+    playerY = 80;
+
+    /*
+     * Small delay so she cannot immediately
+     * fall again during the respawn.
+     */
+
+    setTimeout(() => {
+
+        /*
+         * Find the ground/platform underneath.
+         */
+
+        const safePlatform =
+            findPlatformBelow();
+
+        if (safePlatform !== -Infinity) {
+
+            playerY =
+                safePlatform;
+
+        } else {
+
+            playerY = 80;
+
+        }
+
+        velocityY = 0;
+
+        jumping = false;
+
+        invincible = false;
+
+    }, 250);
+
+
+    if (health <= 0) {
+
+        health = 3;
+
+        updateHearts();
+
+        playerX = 70;
+        playerY = 80;
+
+        velocityY = 0;
+
+        jumping = false;
+
+    }
+
+}
+
+
+/* =========================
+   OBSTACLE COLLISION
+========================= */
+
+function checkObstacles() {
+
+    if (invincible || won) {
+        return;
+    }
+
+    const player =
+        playerRect();
+
+    const obstacles =
+        document.querySelectorAll(
+            ".fire, .spikes"
+        );
+
+    obstacles.forEach(obstacle => {
+
+        const rect =
+            obstacle.getBoundingClientRect();
+
+        const gameRect =
+            game.getBoundingClientRect();
+
+        const obstacleLeft =
+            rect.left -
+            gameRect.left +
+            cameraX;
+
+        const obstacleRight =
+            obstacleLeft +
+            rect.width;
+
+        const obstacleBottom =
+            game.clientHeight -
+            (
+                rect.bottom -
+                gameRect.top
+            );
+
+        const obstacleTop =
+            obstacleBottom +
+            rect.height;
+
+        const hit =
+            player.right >
+                obstacleLeft &&
+            player.left <
+                obstacleRight &&
+            player.bottom <
+                obstacleTop &&
+            player.top >
+                obstacleBottom;
+
+        if (hit) {
+
+            loseHeart();
+
+        }
+
+    });
+
+}
+
+
+/* =========================
+   WIN
+========================= */
+
+function checkWin() {
+
+    if (won) {
+        return;
+    }
+
+    /*
+     * Melody must actually reach
+     * the final light.
+     */
+
+    if (playerX >= 10600) {
+
+        won = true;
+
+        movingLeft = false;
+        movingRight = false;
+
+        setTimeout(() => {
+
+            win.style.display =
+                "flex";
+
+        }, 400);
+
+    }
+
+}
+
+
+/* =========================
+   BUTTON CONTROLS
+========================= */
+
+function holdButton(button, direction) {
+
+    const start = event => {
+
+        event.preventDefault();
+
+        if (direction === "left") {
+            movingLeft = true;
+        }
+
+        if (direction === "right") {
+            movingRight = true;
+        }
+
+    };
+
+    const stop = event => {
+
+        event.preventDefault();
+
+        if (direction === "left") {
+            movingLeft = false;
+        }
+
+        if (direction === "right") {
+            movingRight = false;
+        }
+
+    };
+
+    button.addEventListener(
+        "pointerdown",
+        start
+    );
+
+    button.addEventListener(
+        "pointerup",
+        stop
+    );
+
+    button.addEventListener(
+        "pointercancel",
+        stop
+    );
+
+    button.addEventListener(
+        "pointerleave",
+        stop
+    );
+
+}
+
+
+holdButton(leftButton, "left");
+holdButton(rightButton, "right");
+
+
+jumpButton.addEventListener(
+    "pointerdown",
+    event => {
+
+        event.preventDefault();
+
+        jump();
+
+    }
+);
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "ArrowLeft" ||
+            event.key.toLowerCase() === "a"
+        ) {
+
+            movingLeft = true;
+
+        }
+
+        if (
+            event.key === "ArrowRight" ||
+            event.key.toLowerCase() === "d"
+        ) {
+
+            movingRight = true;
+
+        }
+
+        if (
+            event.key === "ArrowUp" ||
+            event.key === " "
+        ) {
+
+            jump();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keyup",
+    event => {
+
+        if (
+            event.key === "ArrowLeft" ||
+            event.key.toLowerCase() === "a"
+        ) {
+
+            movingLeft = false;
+
+        }
+
+        if (
+            event.key === "ArrowRight" ||
+            event.key.toLowerCase() === "d"
+        ) {
+
+            movingRight = false;
+
+        }
+
+    }
+);
+
+
+/* =========================
+   EXIT
+========================= */
+
+function goBack() {
+
+    window.location.href =
+        "letters.html";
+
+}
+
+
+/* =========================
+   GAME LOOP
+========================= */
+
+function gameLoop() {
+
+    if (!won) {
+
+        updateMovingPlatforms();
+
+        movePlayer();
+
+        updatePhysics();
+
+        checkObstacles();
+
+        updatePlayer();
+
+        updateCamera();
+
+        updateProgress();
+
+        checkWin();
+
+    }
+
+    requestAnimationFrame(
+        gameLoop
+    );
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+updateHearts();
+
+updatePlayer();
+
+gameLoop();
+
+</script>
+
+</body>
+</html>
