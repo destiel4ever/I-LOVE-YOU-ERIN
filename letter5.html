@@ -31,6 +31,39 @@
         }
 
 
+        /* =========================
+           DECORATIONS
+        ========================= */
+
+        .page-deco {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            object-fit: contain;
+        }
+
+        .deco-left {
+            width: 90px;
+            top: 8%;
+            left: 2%;
+            transform: rotate(-12deg);
+        }
+
+        .deco-right {
+            width: 85px;
+            top: 10%;
+            right: 2%;
+            transform: rotate(10deg);
+        }
+
+        .deco-bottom {
+            width: 110px;
+            bottom: 2%;
+            left: 2%;
+            transform: rotate(-8deg);
+        }
+
+
         /* SOFT OVERLAY */
 
         body::before {
@@ -65,7 +98,7 @@
             animation:
                 floatSparkle 4s ease-in-out infinite;
 
-            z-index: 1;
+            z-index: 2;
         }
 
         .s1 {
@@ -120,7 +153,9 @@
         }
 
 
-        /* OPENING */
+        /* =========================
+           OPENING
+        ========================= */
 
         #opening {
 
@@ -137,6 +172,9 @@
             text-align: center;
 
             padding: 25px;
+
+            position: relative;
+            z-index: 3;
         }
 
 
@@ -154,10 +192,27 @@
         }
 
 
-        .envelope {
+        /* =========================
+           REAL ENVELOPE
+        ========================= */
+
+        .envelope-wrapper {
+
+            position: relative;
 
             width: 245px;
             height: 165px;
+
+            cursor: pointer;
+
+            perspective: 900px;
+        }
+
+
+        .envelope {
+
+            width: 100%;
+            height: 100%;
 
             position: relative;
 
@@ -169,14 +224,14 @@
                 0 18px 45px
                 rgba(70,25,60,.25);
 
-            cursor: pointer;
+            overflow: hidden;
 
             transition:
                 transform .3s ease;
         }
 
 
-        .envelope:hover {
+        .envelope-wrapper:hover .envelope {
 
             transform:
                 scale(1.07)
@@ -184,9 +239,50 @@
         }
 
 
-        .envelope::before {
+        /* ENVELOPE FRONT */
+
+        .envelope-front {
+
+            position: absolute;
+
+            inset: 0;
+
+            background: #fff8fc;
+
+            z-index: 3;
+        }
+
+
+        /* LOWER ENVELOPE FOLD */
+
+        .envelope-front::after {
 
             content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 0;
+            height: 0;
+
+            border-left:
+                122px solid transparent;
+
+            border-right:
+                122px solid transparent;
+
+            border-bottom:
+                92px solid #ffe5f0;
+
+            z-index: 4;
+        }
+
+
+        /* TOP FLAP */
+
+        .envelope-flap {
 
             position: absolute;
 
@@ -204,24 +300,92 @@
 
             border-top:
                 92px solid #f6b3d0;
+
+            transform-origin: top center;
+
+            transition:
+                transform .8s ease;
+
+            z-index: 6;
         }
 
 
-        .envelope::after {
+        /* HEART */
 
-            content: "💗";
+        .envelope-heart {
 
             position: absolute;
 
             left: 50%;
-            top: 50%;
+            top: 51%;
 
             transform:
                 translate(-50%, -50%);
 
             font-size: 45px;
 
-            z-index: 5;
+            z-index: 8;
+
+            transition:
+                opacity .3s ease;
+        }
+
+
+        /* LETTER INSIDE */
+
+        .inside-letter {
+
+            position: absolute;
+
+            left: 50%;
+            top: 25px;
+
+            width: 82%;
+            height: 90%;
+
+            transform:
+                translateX(-50%)
+                translateY(70px);
+
+            background: white;
+
+            border-radius: 8px;
+
+            z-index: 2;
+
+            transition:
+                transform .8s ease;
+
+            box-shadow:
+                0 5px 15px
+                rgba(60,20,50,.15);
+        }
+
+
+        /* OPEN STATE */
+
+        .envelope-wrapper.opening .envelope-flap {
+
+            transform:
+                rotateX(180deg);
+        }
+
+        .envelope-wrapper.opening .inside-letter {
+
+            transform:
+                translateX(-50%)
+                translateY(-25px);
+        }
+
+        .envelope-wrapper.opening .envelope-heart {
+
+            opacity: 0;
+        }
+
+
+        .envelope-wrapper.opening {
+
+            pointer-events: none;
         }
 
 
@@ -240,10 +404,14 @@
             text-shadow:
                 0 2px 8px
                 rgba(70,30,60,.5);
+
+            z-index: 10;
         }
 
 
-        /* LETTER */
+        /* =========================
+           LETTER
+        ========================= */
 
         #letter {
 
@@ -254,6 +422,10 @@
             min-height: 100vh;
 
             padding: 55px 20px 110px;
+
+            position: relative;
+
+            z-index: 3;
         }
 
 
@@ -361,7 +533,9 @@
         }
 
 
-        /* FINAL MESSAGE */
+        /* =========================
+           FINAL MESSAGE
+        ========================= */
 
         #finalScreen {
 
@@ -384,18 +558,20 @@
 
             animation:
                 finalAppear 1s ease;
+
+            position: relative;
+
+            z-index: 3;
         }
 
 
         @keyframes finalAppear {
 
             from {
-
                 opacity: 0;
             }
 
             to {
-
                 opacity: 1;
             }
         }
@@ -474,18 +650,18 @@
         @keyframes heartbeat {
 
             0%, 100% {
-
                 transform: scale(1);
             }
 
             50% {
-
                 transform: scale(1.15);
             }
         }
 
 
-        /* BUTTONS */
+        /* =========================
+           BUTTONS
+        ========================= */
 
         button {
 
@@ -517,14 +693,12 @@
 
 
         button:hover {
-
             transform:
                 scale(1.06);
         }
 
 
         #finishButton {
-
             margin-top: 35px;
         }
 
@@ -546,32 +720,34 @@
         }
 
 
-        /* PHONE */
+        /* =========================
+           PHONE
+        ========================= */
 
         @media(max-width:600px) {
 
             #opening h1 {
-
                 font-size: 30px;
             }
 
-
-            .envelope {
-
+            .envelope-wrapper {
                 width: 210px;
                 height: 145px;
             }
 
-
-            .envelope::before {
+            .envelope-front::after {
 
                 border-left-width: 105px;
-
                 border-right-width: 105px;
-
-                border-top-width: 80px;
+                border-bottom-width: 80px;
             }
 
+            .envelope-flap {
+
+                border-left-width: 105px;
+                border-right-width: 105px;
+                border-top-width: 80px;
+            }
 
             .letterPaper {
 
@@ -581,26 +757,36 @@
                     32px 25px;
             }
 
-
             .letterHeader {
-
                 font-size: 29px;
             }
 
-
             .letterText {
-
                 font-size: 16px;
-
                 line-height: 1.7;
             }
 
-
             #finalScreen h2 {
-
                 font-size: 29px;
             }
 
+            .deco-left {
+                width: 55px;
+                top: 8%;
+                left: 1%;
+            }
+
+            .deco-right {
+                width: 55px;
+                top: 10%;
+                right: 1%;
+            }
+
+            .deco-bottom {
+                width: 65px;
+                bottom: 1%;
+                left: 1%;
+            }
         }
 
     </style>
@@ -609,6 +795,27 @@
 
 
 <body>
+
+
+<!-- DECORATIONS -->
+
+<img
+    class="page-deco deco-left"
+    src="flowers.png"
+    alt=""
+>
+
+<img
+    class="page-deco deco-right"
+    src="sparklespink.png"
+    alt=""
+>
+
+<img
+    class="page-deco deco-bottom"
+    src="butterfly3.png"
+    alt=""
+>
 
 
 <!-- SPARKLES -->
@@ -620,8 +827,9 @@
 <div class="sparkle s5">♡</div>
 
 
-
-<!-- OPENING -->
+<!-- =========================
+     OPENING
+========================= -->
 
 <section id="opening">
 
@@ -631,9 +839,24 @@
 
 
     <div
-        class="envelope"
+        class="envelope-wrapper"
         onclick="openLetter()"
     >
+
+        <div class="envelope">
+
+            <div class="inside-letter"></div>
+
+            <div class="envelope-front"></div>
+
+            <div class="envelope-flap"></div>
+
+            <div class="envelope-heart">
+                💗
+            </div>
+
+        </div>
+
 
         <div class="openText">
             click to open 💗
@@ -644,8 +867,9 @@
 </section>
 
 
-
-<!-- LETTER -->
+<!-- =========================
+     LETTER
+========================= -->
 
 <section id="letter">
 
@@ -715,8 +939,9 @@
 </section>
 
 
-
-<!-- FINAL SCREEN -->
+<!-- =========================
+     FINAL SCREEN
+========================= -->
 
 <section id="finalScreen">
 
@@ -756,7 +981,6 @@
 </section>
 
 
-
 <!-- EXIT -->
 
 <button
@@ -767,22 +991,32 @@
 </button>
 
 
-
 <script>
 
 
 function openLetter() {
 
-    document.getElementById("opening").style.display =
-        "none";
+    const wrapper =
+        document.querySelector(".envelope-wrapper");
 
-    document.getElementById("letter").style.display =
-        "block";
+    wrapper.classList.add("opening");
 
-    document.getElementById("exit").style.display =
-        "block";
 
-    window.scrollTo(0, 0);
+    setTimeout(function() {
+
+        document.getElementById("opening").style.display =
+            "none";
+
+        document.getElementById("letter").style.display =
+            "block";
+
+        document.getElementById("exit").style.display =
+            "block";
+
+        window.scrollTo(0, 0);
+
+    }, 900);
+
 }
 
 
