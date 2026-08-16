@@ -17,12 +17,10 @@
 
         body {
             font-family: Arial, sans-serif;
-
             background-image: url("grande.jpg");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-
             color: white;
             overflow-x: hidden;
         }
@@ -31,9 +29,7 @@
             content: "";
             position: fixed;
             inset: 0;
-
             background: rgba(255, 150, 195, 0.25);
-
             z-index: -1;
         }
 
@@ -42,7 +38,6 @@
             margin: 25px 0 5px;
             font-size: 43px;
             color: white;
-
             text-shadow:
                 0 3px 12px rgba(80, 30, 70, 0.45);
         }
@@ -52,26 +47,16 @@
             margin: 0 auto 20px;
             font-size: 16px;
             color: white;
-
             text-shadow:
                 0 2px 8px rgba(80, 30, 70, 0.5);
         }
 
-        /* =========================
-           DECORATIONS
-        ========================= */
-
         .deco {
             position: fixed;
-
             width: 70px;
-
             z-index: 1;
-
             pointer-events: none;
-
             opacity: 0.9;
-
             filter: drop-shadow(
                 0 5px 8px rgba(80, 30, 60, 0.15)
             );
@@ -99,14 +84,9 @@
             width: 94%;
             max-width: 900px;
             margin: 0 auto 90px;
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 38px 25px;
-
             padding: 25px;
         }
 
@@ -120,17 +100,11 @@
         .record {
             width: 175px;
             height: 175px;
-
             border-radius: 50%;
-
             position: relative;
-
             cursor: pointer;
-
             overflow: hidden;
-
             background: #111;
-
             border: 6px solid #111;
 
             box-shadow:
@@ -143,55 +117,39 @@
 
         .cover {
             position: absolute;
-
             width: 72%;
             height: 72%;
-
             left: 14%;
             top: 14%;
-
             border-radius: 50%;
-
             object-fit: cover;
-
             z-index: 2;
         }
 
         .record::before {
             content: "";
-
             position: absolute;
-
             inset: 5px;
-
             border-radius: 50%;
 
             border:
                 2px solid rgba(255,255,255,0.08);
 
             box-shadow:
-
                 0 0 0 9px rgba(255,255,255,0.035),
-
                 0 0 0 18px rgba(255,255,255,0.035),
-
                 0 0 0 27px rgba(255,255,255,0.03),
-
                 0 0 0 36px rgba(255,255,255,0.025);
 
             z-index: 3;
-
             pointer-events: none;
         }
 
         .record::after {
             content: "";
-
             position: absolute;
-
             width: 22px;
             height: 22px;
-
             left: 50%;
             top: 50%;
 
@@ -199,7 +157,6 @@
                 translate(-50%, -50%);
 
             border-radius: 50%;
-
             background: #f7a8c4;
 
             border:
@@ -215,7 +172,6 @@
             transform: scale(1.07);
 
             box-shadow:
-
                 0 16px 35px
                 rgba(50,20,60,0.45),
 
@@ -228,7 +184,6 @@
                 spin 3s linear infinite;
 
             box-shadow:
-
                 0 16px 35px
                 rgba(50,20,60,0.45),
 
@@ -250,11 +205,8 @@
 
         .song-title {
             margin-top: 14px;
-
             color: white;
-
             font-size: 17px;
-
             font-weight: bold;
 
             text-shadow:
@@ -264,7 +216,6 @@
 
         .artist {
             margin-top: 4px;
-
             color:
                 rgba(255,255,255,0.9);
 
@@ -277,7 +228,6 @@
 
         #nowPlaying {
             position: fixed;
-
             left: 50%;
             bottom: 63px;
 
@@ -288,18 +238,14 @@
             max-width: 85%;
 
             padding: 10px 20px;
-
             border-radius: 30px;
 
             background:
                 rgba(255,255,255,0.92);
 
             color: #c75d8b;
-
             text-align: center;
-
             font-size: 14px;
-
             font-weight: bold;
 
             box-shadow:
@@ -312,7 +258,6 @@
                 opacity 0.3s ease;
 
             pointer-events: none;
-
             z-index: 50;
         }
 
@@ -322,7 +267,6 @@
 
         #exit {
             position: fixed;
-
             left: 50%;
             bottom: 15px;
 
@@ -332,7 +276,6 @@
             padding: 9px 25px;
 
             border: none;
-
             border-radius: 25px;
 
             background:
@@ -341,9 +284,7 @@
             color: #c75d8b;
 
             font-size: 14px;
-
             font-weight: bold;
-
             cursor: pointer;
 
             box-shadow:
@@ -375,7 +316,6 @@
                     repeat(2, 1fr);
 
                 gap: 30px 12px;
-
                 padding: 15px;
             }
 
@@ -422,10 +362,7 @@
     </style>
 </head>
 
-
 <body>
-
-    <!-- DECORATIONS -->
 
     <img
         class="deco deco1"
@@ -445,16 +382,21 @@
         alt=""
     >
 
-
     <h1>Our Playlist 🎵</h1>
 
     <div class="subtitle">
         songs that remind me of you 💗
     </div>
 
+    <!-- BACKGROUND MUSIC -->
+
+    <audio
+        id="backgroundMusic"
+        src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/calm.mp3"
+        loop
+    ></audio>
 
     <div id="playlist">
-
 
         <!-- SONG 1 -->
 
@@ -687,6 +629,268 @@
         </div>
 
 
+        <!-- SONG 8 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song8"
+            >
+
+                <img
+                    class="cover"
+                    src="1ineedu.jpg"
+                    alt="I Need U"
+                >
+
+            </div>
+
+            <div class="song-title">
+                I Need U
+            </div>
+
+            <div class="artist">
+                BTS
+            </div>
+
+            <audio
+                id="song8"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/1ineedu.mp3"
+            ></audio>
+
+        </div>
+
+
+        <!-- SONG 9 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song9"
+            >
+
+                <img
+                    class="cover"
+                    src="1needy.jpg"
+                    alt="needy"
+                >
+
+            </div>
+
+            <div class="song-title">
+                needy
+            </div>
+
+            <div class="artist">
+                Ariana Grande
+            </div>
+
+            <audio
+                id="song9"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/1needy.mp3"
+            ></audio>
+
+        </div>
+
+
+        <!-- SONG 10 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song10"
+            >
+
+                <img
+                    class="cover"
+                    src="1roommates.jpg"
+                    alt="Roommates"
+                >
+
+            </div>
+
+            <div class="song-title">
+                Roommates
+            </div>
+
+            <div class="artist">
+                Malcolm Todd
+            </div>
+
+            <audio
+                id="song10"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/1roommates.mp3"
+            ></audio>
+
+        </div>
+        <!-- SONG 11 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song11"
+            >
+
+                <img
+                    class="cover"
+                    src="1bloodline.jpg"
+                    alt="bloodline"
+                >
+
+            </div>
+
+            <div class="song-title">
+                bloodline
+            </div>
+
+            <div class="artist">
+                Ariana Grande
+            </div>
+
+            <audio
+                id="song11"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/1bloodline.mp3"
+            ></audio>
+
+        </div>
+
+
+        <!-- SONG 12 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song12"
+            >
+
+                <img
+                    class="cover"
+                    src="1saveme.jpg"
+                    alt="Save Me"
+                >
+
+            </div>
+
+            <div class="song-title">
+                Save Me
+            </div>
+
+            <div class="artist">
+                BTS
+            </div>
+
+            <audio
+                id="song12"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/1saveme.mp3"
+            ></audio>
+
+        </div>
+
+
+        <!-- SONG 13 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song13"
+            >
+
+                <img
+                    class="cover"
+                    src="1habibileh.jpg"
+                    alt="Habibi Leh"
+                >
+
+            </div>
+
+            <div class="song-title">
+                Habibi Leh
+            </div>
+
+            <div class="artist">
+                TUL8TE
+            </div>
+
+            <audio
+                id="song13"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/1habibileh.mp3"
+            ></audio>
+
+        </div>
+
+
+        <!-- SONG 14 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song14"
+            >
+
+                <img
+                    class="cover"
+                    src="1lifegoeson.jpg"
+                    alt="Life Goes On"
+                >
+
+            </div>
+
+            <div class="song-title">
+                Life Goes On
+            </div>
+
+            <div class="artist">
+                BTS
+            </div>
+
+            <audio
+                id="song14"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/1lifegoeson.mp3"
+            ></audio>
+
+        </div>
+
+
+        <!-- SONG 15 -->
+
+        <div class="song">
+
+            <div
+                class="record"
+                data-song="song15"
+            >
+
+                <img
+                    class="cover"
+                    src="1lovemeharder.jpg"
+                    alt="Love Me Harder"
+                >
+
+            </div>
+
+            <div class="song-title">
+                Love Me Harder
+            </div>
+
+            <div class="artist">
+                Ariana Grande ft. The Weeknd
+            </div>
+
+            <audio
+                id="song15"
+                src="https://fyfyzmiwncrdemkdgkxy.supabase.co/storage/v1/object/public/Music/1lovemeharder.mp3"
+            ></audio>
+
+        </div>
+
+
     </div>
 
 
@@ -711,10 +915,85 @@
         const nowPlaying =
             document.getElementById("nowPlaying");
 
+        const backgroundMusic =
+            document.getElementById("backgroundMusic");
+
         let currentAudio = null;
 
         let currentRecord = null;
 
+
+        /* BACKGROUND MUSIC */
+
+        backgroundMusic.volume = 0.12;
+
+
+        backgroundMusic.play()
+            .catch(() => {
+
+                console.log(
+                    "Background music waiting for user interaction."
+                );
+
+            });
+
+
+        function startBackgroundMusic() {
+
+            if (
+                currentAudio &&
+                !currentAudio.paused
+            ) {
+                return;
+            }
+
+            backgroundMusic.play()
+                .catch(error => {
+
+                    console.log(
+                        "Background music could not start:",
+                        error
+                    );
+
+                });
+
+        }
+
+
+        function stopBackgroundMusic() {
+
+            backgroundMusic.pause();
+
+        }
+
+
+        document.addEventListener(
+            "pointerdown",
+            function startBackgroundOnce() {
+
+                if (
+                    !currentAudio ||
+                    currentAudio.paused
+                ) {
+
+                    backgroundMusic.play()
+                        .catch(() => {});
+
+                }
+
+                document.removeEventListener(
+                    "pointerdown",
+                    startBackgroundOnce
+                );
+
+            },
+            {
+                once: true
+            }
+        );
+
+
+        /* RECORD CONTROLS */
 
         records.forEach(record => {
 
@@ -733,6 +1012,11 @@
                         );
 
 
+                    /*
+                     * Clicking the currently playing
+                     * record pauses it.
+                     */
+
                     if (
                         currentAudio === audio &&
                         !audio.paused
@@ -744,20 +1028,30 @@
                             "playing"
                         );
 
+                        currentAudio = null;
+
+                        currentRecord = null;
+
                         nowPlaying.classList.remove(
                             "show"
                         );
 
+                        startBackgroundMusic();
+
                         return;
                     }
 
+
+                    /* Stop previous song */
 
                     if (currentAudio) {
 
                         currentAudio.pause();
 
                         currentAudio.currentTime = 0;
+
                     }
+
 
                     if (currentRecord) {
 
@@ -766,6 +1060,11 @@
                         );
 
                     }
+
+
+                    /* Stop background music */
+
+                    stopBackgroundMusic();
 
 
                     currentAudio = audio;
@@ -790,6 +1089,8 @@
                                 error
                             );
 
+                            startBackgroundMusic();
+
                         });
 
 
@@ -807,6 +1108,7 @@
                             )
                             .textContent;
 
+
                     nowPlaying.textContent =
                         "♪ Now playing: " +
                         title +
@@ -817,6 +1119,8 @@
                         "show"
                     );
 
+
+                    /* Song finished */
 
                     audio.onended =
                         function() {
@@ -839,6 +1143,8 @@
                             currentRecord =
                                 null;
 
+                            startBackgroundMusic();
+
                         };
 
                 }
@@ -847,6 +1153,8 @@
 
         });
 
+
+        /* EXIT */
 
         function goBack() {
 
@@ -866,13 +1174,16 @@
 
             }
 
+            backgroundMusic.pause();
+
+            backgroundMusic.currentTime = 0;
+
             window.location.href =
                 "letters.html";
 
         }
 
     </script>
-
 
 </body>
 </html>
