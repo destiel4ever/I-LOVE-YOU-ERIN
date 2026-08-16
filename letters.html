@@ -5,6 +5,10 @@
 
     <style>
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
@@ -19,10 +23,49 @@
             overflow: hidden;
         }
 
+
+        /* =========================
+           DECORATIONS
+        ========================= */
+
+        .deco {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            object-fit: contain;
+        }
+
+        .deco1 {
+            width: 85px;
+            top: 8%;
+            left: 2%;
+            transform: rotate(-12deg);
+        }
+
+        .deco2 {
+            width: 75px;
+            top: 12%;
+            right: 3%;
+            transform: rotate(10deg);
+        }
+
+        .deco3 {
+            width: 90px;
+            bottom: 3%;
+            left: 3%;
+            transform: rotate(-8deg);
+        }
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
         h1 {
             position: absolute;
             top: 6%;
             left: 50%;
+
             transform: translateX(-50%);
 
             font-size: 48px;
@@ -32,55 +75,65 @@
             color: #f7a8c4;
         }
 
+
+        /* =========================
+           ENVELOPE
+        ========================= */
+
         .envelope {
             position: absolute;
 
             width: 220px;
             height: 145px;
 
-            background: #fff7fb;
+            background: white;
+
             border-radius: 12px;
 
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+            box-shadow:
+                0 12px 25px rgba(0, 0, 0, 0.18);
 
             cursor: pointer;
 
-            transition: transform 0.3s ease;
+            transition:
+                transform 0.3s ease,
+                opacity 0.3s ease;
+
+            background-image: url("1envelope.png");
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            z-index: 4;
         }
 
         .envelope:hover {
             transform: scale(1.08) rotate(2deg);
         }
 
-        .envelope::before {
-            content: "";
 
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* OPENING ANIMATION */
 
-            width: 0;
-            height: 0;
-
-            border-left: 110px solid transparent;
-            border-right: 110px solid transparent;
-            border-top: 78px solid #f7b6d3;
+        .envelope.opening {
+            animation: envelopeOpen 0.65s ease forwards;
         }
 
-        .envelope::after {
-            content: "";
+        @keyframes envelopeOpen {
 
-            position: absolute;
-            bottom: 0;
-            left: 0;
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
 
-            width: 0;
-            height: 0;
+            35% {
+                transform: scale(1.12) rotate(-2deg);
+            }
 
-            border-left: 110px solid transparent;
-            border-right: 110px solid transparent;
-            border-bottom: 73px solid #ffe5f0;
+            100% {
+                transform: scale(0.92) rotate(0deg);
+                opacity: 0.35;
+            }
         }
+
 
         .heart {
             position: absolute;
@@ -93,9 +146,14 @@
             font-size: 38px;
 
             z-index: 2;
+
+            color: #d85d91;
         }
 
-        /* LETTER 1 */
+
+        /* =========================
+           LETTER POSITIONS
+        ========================= */
 
         .letter-one {
             top: 27%;
@@ -104,8 +162,6 @@
             transform: rotate(-7deg);
         }
 
-        /* LETTER 2 */
-
         .letter-two {
             top: 27%;
             right: 7%;
@@ -113,18 +169,14 @@
             transform: rotate(7deg);
         }
 
-        /* FINAL LETTER - CENTER */
-
         .letter-five {
             top: 45%;
             left: 50%;
 
             transform: translateX(-50%) rotate(-2deg);
 
-            z-index: 3;
+            z-index: 5;
         }
-
-        /* LETTER 3 */
 
         .letter-three {
             bottom: 7%;
@@ -133,8 +185,6 @@
             transform: rotate(7deg);
         }
 
-        /* LETTER 4 */
-
         .letter-four {
             bottom: 7%;
             right: 7%;
@@ -142,7 +192,10 @@
             transform: rotate(-7deg);
         }
 
-        /* NUMBERS */
+
+        /* =========================
+           NUMBERS
+        ========================= */
 
         .number {
             position: absolute;
@@ -154,6 +207,7 @@
             height: 42px;
 
             background: white;
+
             border-radius: 50%;
 
             display: flex;
@@ -165,14 +219,22 @@
 
             color: #d85d91;
 
-            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+            box-shadow:
+                0 5px 12px rgba(0,0,0,0.15);
 
             z-index: 10;
         }
 
-        /* PHONE */
+
+        /* =========================
+           PHONE
+        ========================= */
 
         @media (max-width: 600px) {
+
+            body {
+                overflow: hidden;
+            }
 
             h1 {
                 font-size: 36px;
@@ -182,18 +244,6 @@
             .envelope {
                 width: 155px;
                 height: 105px;
-            }
-
-            .envelope::before {
-                border-left-width: 77px;
-                border-right-width: 77px;
-                border-top-width: 55px;
-            }
-
-            .envelope::after {
-                border-left-width: 77px;
-                border-right-width: 77px;
-                border-bottom-width: 52px;
             }
 
             .heart {
@@ -233,20 +283,62 @@
                 top: -17px;
                 left: -13px;
             }
+
+            .deco1 {
+                width: 55px;
+                top: 9%;
+                left: 1%;
+            }
+
+            .deco2 {
+                width: 50px;
+                top: 12%;
+                right: 1%;
+            }
+
+            .deco3 {
+                width: 55px;
+                bottom: 1%;
+                left: 1%;
+            }
         }
 
     </style>
 </head>
 
+
 <body>
+
+
+    <!-- DECORATIONS -->
+
+    <img
+        class="deco deco1"
+        src="butterfly.png"
+        alt=""
+    >
+
+    <img
+        class="deco deco2"
+        src="sparklespink.png"
+        alt=""
+    >
+
+    <img
+        class="deco deco3"
+        src="flowers.png"
+        alt=""
+    >
+
 
     <h1>For You 💌</h1>
 
 
     <!-- LETTER 1 -->
+
     <div
         class="envelope letter-one"
-        onclick="window.location.href='letter1.html'"
+        onclick="openEnvelope(this, 'letter1.html')"
     >
         <div class="number">1</div>
         <div class="heart">♡</div>
@@ -254,9 +346,10 @@
 
 
     <!-- LETTER 2 -->
+
     <div
         class="envelope letter-two"
-        onclick="window.location.href='letter2.html'"
+        onclick="openEnvelope(this, 'letter2.html')"
     >
         <div class="number">2</div>
         <div class="heart">♡</div>
@@ -264,9 +357,10 @@
 
 
     <!-- LETTER 5 -->
+
     <div
         class="envelope letter-five"
-        onclick="window.location.href='letter5.html'"
+        onclick="openEnvelope(this, 'letter5.html')"
     >
         <div class="number">5</div>
         <div class="heart">♡</div>
@@ -274,9 +368,10 @@
 
 
     <!-- LETTER 3 -->
+
     <div
         class="envelope letter-three"
-        onclick="window.location.href='letter3.html'"
+        onclick="openEnvelope(this, 'letter3.html')"
     >
         <div class="number">3</div>
         <div class="heart">♡</div>
@@ -284,13 +379,31 @@
 
 
     <!-- LETTER 4 -->
+
     <div
         class="envelope letter-four"
-        onclick="window.location.href='letter4.html'"
+        onclick="openEnvelope(this, 'letter4.html')"
     >
         <div class="number">4</div>
         <div class="heart">♡</div>
     </div>
+
+
+    <script>
+
+        function openEnvelope(envelope, page) {
+
+            envelope.classList.add("opening");
+
+            setTimeout(function() {
+
+                window.location.href = page;
+
+            }, 500);
+
+        }
+
+    </script>
 
 </body>
 </html>
