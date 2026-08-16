@@ -25,6 +25,39 @@
         }
 
 
+        /* =========================
+           DECORATIONS
+        ========================= */
+
+        .page-deco {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            object-fit: contain;
+        }
+
+        .deco1 {
+            width: 80px;
+            top: 7%;
+            left: 2%;
+            transform: rotate(-12deg);
+        }
+
+        .deco2 {
+            width: 85px;
+            top: 8%;
+            right: 2%;
+            transform: rotate(8deg);
+        }
+
+        .deco3 {
+            width: 90px;
+            bottom: 3%;
+            left: 2%;
+            transform: rotate(-10deg);
+        }
+
+
         /* Soft background layer */
 
         body::before {
@@ -33,7 +66,8 @@
             position: fixed;
             inset: 0;
 
-            background: rgba(255, 210, 230, 0.12);
+            background:
+                rgba(255, 210, 230, 0.12);
 
             z-index: -1;
         }
@@ -55,6 +89,9 @@
 
             text-shadow:
                 0 2px 10px rgba(100, 40, 80, 0.45);
+
+            position: relative;
+            z-index: 3;
         }
 
         .subtitle {
@@ -68,6 +105,9 @@
                 0 2px 8px rgba(100, 40, 80, 0.4);
 
             margin-bottom: 10px;
+
+            position: relative;
+            z-index: 3;
         }
 
 
@@ -84,6 +124,8 @@
             height: 520px;
 
             margin: 0 auto;
+
+            z-index: 3;
         }
 
 
@@ -153,7 +195,7 @@
 
 
         /* =========================
-           MESSAGE BANNER
+           MESSAGE
         ========================= */
 
         .love-message {
@@ -173,9 +215,11 @@
 
             margin-top: 14px;
 
-            background: rgba(255, 240, 247, 0.94);
+            background:
+                rgba(255, 240, 247, 0.94);
 
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border:
+                1px solid rgba(255, 255, 255, 0.8);
 
             border-radius: 18px;
 
@@ -192,9 +236,9 @@
 
             z-index: 100;
 
-            animation: reveal 0.3s ease;
+            animation:
+                reveal 0.3s ease;
         }
-
 
         .love-item.open {
             z-index: 100;
@@ -203,9 +247,6 @@
         .love-item.open .love-message {
             display: block;
         }
-
-
-        /* Little decorative line */
 
         .love-message::before {
             content: "♡";
@@ -224,12 +265,18 @@
 
             from {
                 opacity: 0;
-                transform: translateX(-50%) translateY(-8px);
+
+                transform:
+                    translateX(-50%)
+                    translateY(-8px);
             }
 
             to {
                 opacity: 1;
-                transform: translateX(-50%) translateY(0);
+
+                transform:
+                    translateX(-50%)
+                    translateY(0);
             }
 
         }
@@ -242,56 +289,48 @@
         .one {
             top: 5px;
             left: 6%;
-
             transform: rotate(-5deg);
         }
 
         .two {
             top: 5px;
             right: 6%;
-
             transform: rotate(5deg);
         }
 
         .three {
             top: 165px;
             left: 50%;
-
             transform: translateX(-50%) rotate(-2deg);
         }
 
         .four {
             top: 315px;
             left: 6%;
-
             transform: rotate(5deg);
         }
 
         .five {
             top: 315px;
             right: 6%;
-
             transform: rotate(-5deg);
         }
 
         .six {
             top: 165px;
             left: 6%;
-
             transform: rotate(-5deg);
         }
 
         .seven {
             top: 165px;
             right: 6%;
-
             transform: rotate(5deg);
         }
 
         .eight {
             top: 395px;
             left: 50%;
-
             transform: translateX(-50%) rotate(2deg);
         }
 
@@ -311,7 +350,8 @@
 
             border-radius: 25px;
 
-            background: rgba(255, 255, 255, 0.92);
+            background:
+                rgba(255, 255, 255, 0.92);
 
             color: #d85d91;
 
@@ -324,6 +364,9 @@
 
             transition:
                 transform 0.2s ease;
+
+            position: relative;
+            z-index: 5;
         }
 
         .exit-button:hover {
@@ -339,7 +382,6 @@
 
             h1 {
                 font-size: 30px;
-
                 margin-top: 28px;
             }
 
@@ -349,13 +391,10 @@
 
             .love-list {
                 width: 100%;
-
                 height: auto;
 
                 display: flex;
-
                 flex-direction: column;
-
                 align-items: center;
 
                 gap: 28px;
@@ -367,7 +406,6 @@
                 position: relative;
 
                 width: 90%;
-
                 max-width: 300px;
 
                 top: auto !important;
@@ -405,6 +443,24 @@
             .exit-button {
                 margin-top: 10px;
             }
+
+            .deco1 {
+                width: 50px;
+                top: 7%;
+                left: 1%;
+            }
+
+            .deco2 {
+                width: 55px;
+                top: 8%;
+                right: 1%;
+            }
+
+            .deco3 {
+                width: 55px;
+                bottom: 1%;
+                left: 1%;
+            }
         }
 
     </style>
@@ -412,6 +468,28 @@
 
 
 <body>
+
+
+    <!-- DECORATIONS -->
+
+    <img
+        class="page-deco deco1"
+        src="flower.png"
+        alt=""
+    >
+
+    <img
+        class="page-deco deco2"
+        src="music.png"
+        alt=""
+    >
+
+    <img
+        class="page-deco deco3"
+        src="sparkles.png"
+        alt=""
+    >
+
 
     <h1>Things I Love About You 💗</h1>
 
@@ -422,64 +500,43 @@
 
     <div class="love-list">
 
+        <!-- KEEP ALL YOUR EXISTING 8 LOVE ITEMS HERE -->
 
         <!-- 1 -->
-
         <div class="love-item one" onclick="openLove(this)">
-
             <div class="icon">✦</div>
-
-            <div class="love-title">
-                Your personality
-            </div>
+            <div class="love-title">Your personality</div>
 
             <div class="love-message">
-
                 You have such a beautiful personality that is hard not to love,
                 you're so entertaining and fun to be around.
 
                 <br><br>
 
                 (also we're twins so im practically praising myself ✌️)
-
             </div>
-
         </div>
 
 
         <!-- 2 -->
-
         <div class="love-item two" onclick="openLove(this)">
-
             <div class="icon">♡</div>
-
-            <div class="love-title">
-                Your smile
-            </div>
+            <div class="love-title">Your smile</div>
 
             <div class="love-message">
-
                 You have such a contagious smile it's so bright and whenever
                 i see you happy or smile, I'm suddenly also happy and smiling.
                 Please keep smiling because it's so beautiful.
-
             </div>
-
         </div>
 
 
         <!-- 3 -->
-
         <div class="love-item three" onclick="openLove(this)">
-
             <div class="icon">☁</div>
-
-            <div class="love-title">
-                Your humor
-            </div>
+            <div class="love-title">Your humor</div>
 
             <div class="love-message">
-
                 It may be a little broken but hey you're funny nonetheless
                 to me... (I'm joking dont bomb me)
 
@@ -493,24 +550,16 @@
 
                 but then again we're twins so i guess our humor don't vary
                 that much!!
-
             </div>
-
         </div>
 
 
         <!-- 4 -->
-
         <div class="love-item four" onclick="openLove(this)">
-
             <div class="icon">✧</div>
-
-            <div class="love-title">
-                Your aesthetic/theme
-            </div>
+            <div class="love-title">Your aesthetic/theme</div>
 
             <div class="love-message">
-
                 I love how angelic/princess-like your whole vibe is.
                 Just from what little you told me about your server i can tell
                 you really like that princess/angel aesthetic and i so love
@@ -519,24 +568,16 @@
                 <br><br>
 
                 It resembles you a lot, because to me you are like an angel &lt;3
-
             </div>
-
         </div>
 
 
         <!-- 5 -->
-
         <div class="love-item five" onclick="openLove(this)">
-
             <div class="icon">♡</div>
-
-            <div class="love-title">
-                Your laugh
-            </div>
+            <div class="love-title">Your laugh</div>
 
             <div class="love-message">
-
                 Now i know i made fun of you in our very early interactions,
                 i even used to call you a witch every time you sent me a vm
                 of you laughing.
@@ -551,24 +592,16 @@
                 Anyways off-topic! I have come to enjoy hearing that evil laugh,
                 because knowing im causing you joy makes me so happy,
                 and i hope you also always stay happy and laugh ♡
-
             </div>
-
         </div>
 
 
         <!-- 6 -->
-
         <div class="love-item six" onclick="openLove(this)">
-
             <div class="icon">♢</div>
-
-            <div class="love-title">
-                Your freakiness
-            </div>
+            <div class="love-title">Your freakiness</div>
 
             <div class="love-message">
-
                 Now this proves we are da real twins because we're literally
                 on the same freakuency.
 
@@ -581,24 +614,16 @@
                 <br><br>
 
                 I really love that chaotic part about you.
-
             </div>
-
         </div>
 
 
         <!-- 7 -->
-
         <div class="love-item seven" onclick="openLove(this)">
-
             <div class="icon">✦</div>
-
-            <div class="love-title">
-                Your creativity/talent
-            </div>
+            <div class="love-title">Your creativity/talent</div>
 
             <div class="love-message">
-
                 I could NEVER shut up about this.
                 You're literally the most talented person ever.
 
@@ -617,24 +642,16 @@
 
                 And you're my biggest inspiration that I'm making this
                 whole thing btw.
-
             </div>
-
         </div>
 
 
         <!-- 8 -->
-
         <div class="love-item eight" onclick="openLove(this)">
-
             <div class="icon">♡</div>
-
-            <div class="love-title">
-                Your kindness/sweetness
-            </div>
+            <div class="love-title">Your kindness/sweetness</div>
 
             <div class="love-message">
-
                 You're just about the sweetest person I've ever met.
                 And i know you also have a mean facade, but my god bro
                 sugar dissolves in water so please stay inside when it's raining
@@ -649,11 +666,8 @@
 
                 You brighten my nights and make everything better with
                 just a few words.
-
             </div>
-
         </div>
-
 
     </div>
 
