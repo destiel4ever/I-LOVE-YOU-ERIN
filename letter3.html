@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>The Obstacle Course!</title>
+    <title>The Obstacle Course! ✨</title>
 
     <style>
         * {
@@ -29,7 +29,7 @@
             margin: 7px 0 0;
             color: white;
             font-size: 30px;
-            text-shadow: 0 3px 10px rgba(60,30,90,.6);
+            text-shadow: 0 3px 12px rgba(60,30,90,.6);
         }
 
         #instructions {
@@ -54,8 +54,10 @@
             margin: auto;
             overflow: hidden;
             border-radius: 28px;
-            border: 2px solid rgba(255,255,255,.75);
-            box-shadow: 0 18px 50px rgba(50,20,80,.3);
+            border: 2px solid rgba(255,255,255,.8);
+            box-shadow:
+                0 18px 50px rgba(50,20,80,.3),
+                inset 0 0 35px rgba(255,255,255,.15);
         }
 
         #world {
@@ -73,6 +75,7 @@
             font-size: 60px;
             z-index: 1;
             pointer-events: none;
+            filter: blur(.3px);
         }
 
         .cloud1 {
@@ -102,16 +105,47 @@
             position: absolute;
             color: white;
             font-size: 22px;
-            opacity: .7;
+            opacity: .75;
             z-index: 2;
             pointer-events: none;
+            text-shadow:
+                0 0 8px white,
+                0 0 16px rgba(255,255,255,.9);
+            animation: angelSparkle 2.8s ease-in-out infinite;
+        }
+
+        .sparkle::after {
+            content: "✧";
+            position: absolute;
+            left: 2px;
+            top: 1px;
+            opacity: .45;
+        }
+
+        @keyframes angelSparkle {
+            0%, 100% {
+                transform: translateY(0) scale(.8) rotate(0deg);
+                opacity: .35;
+            }
+
+            50% {
+                transform: translateY(-12px) scale(1.35) rotate(20deg);
+                opacity: 1;
+            }
         }
 
         .ground {
             position: absolute;
             height: 80px;
-            background: rgba(255,255,255,.42);
-            border-top: 3px solid rgba(255,255,255,.85);
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(255,255,255,.7),
+                    rgba(255,255,255,.3)
+                );
+            border-top: 3px solid rgba(255,255,255,.95);
+            box-shadow:
+                0 -5px 18px rgba(255,255,255,.35);
             z-index: 8;
         }
 
@@ -119,25 +153,44 @@
             position: absolute;
             height: 28px;
             border-radius: 15px;
-            background: rgba(255,255,255,.9);
-            border: 2px solid rgba(255,255,255,.95);
+            background: rgba(255,255,255,.93);
+            border: 2px solid rgba(255,255,255,.98);
             box-shadow:
                 0 8px 15px rgba(60,30,90,.18),
-                inset 0 3px 5px rgba(255,255,255,.8);
+                inset 0 3px 5px rgba(255,255,255,.9),
+                0 0 12px rgba(255,255,255,.25);
             z-index: 10;
         }
 
         .platform::after {
             content: "✦";
             position: absolute;
-            color: rgba(255,255,255,.75);
+            color: rgba(255,255,255,.85);
             right: 12px;
             top: -22px;
             font-size: 15px;
+            animation: tinyTwinkle 2s infinite ease-in-out;
+        }
+
+        @keyframes tinyTwinkle {
+            0%, 100% {
+                opacity: .35;
+                transform: scale(.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
         }
 
         .movingPlatform {
-            background: rgba(255,231,248,.95);
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(255,235,249,.98),
+                    rgba(255,215,239,.9)
+                );
         }
 
         #melody {
@@ -147,7 +200,10 @@
             object-fit: contain;
             z-index: 30;
             pointer-events: none;
-            filter: drop-shadow(0 7px 8px rgba(60,30,90,.35));
+            filter:
+                drop-shadow(0 7px 8px rgba(60,30,90,.35))
+                drop-shadow(0 0 8px rgba(255,255,255,.35));
+            transform-origin: center bottom;
         }
 
         .fire {
@@ -156,18 +212,21 @@
             width: 58px;
             height: 58px;
             z-index: 20;
+            filter: drop-shadow(0 0 7px rgba(255,150,100,.5));
         }
 
         .spikes {
             position: absolute;
             font-size: 39px;
             z-index: 20;
+            filter: drop-shadow(0 0 6px rgba(255,255,255,.35));
         }
 
         .flower {
             position: absolute;
             font-size: 25px;
             z-index: 11;
+            filter: drop-shadow(0 3px 5px rgba(60,30,90,.2));
         }
 
         #light {
@@ -191,10 +250,18 @@
         @keyframes glow {
             0%,100% {
                 transform: scale(1);
+                box-shadow:
+                    0 0 25px white,
+                    0 0 60px white,
+                    0 0 100px rgba(255,255,255,.8);
             }
 
             50% {
                 transform: scale(1.12);
+                box-shadow:
+                    0 0 35px white,
+                    0 0 80px white,
+                    0 0 130px rgba(255,255,255,.9);
             }
         }
 
@@ -209,6 +276,7 @@
             background: rgba(255,255,255,.35);
             overflow: hidden;
             z-index: 50;
+            box-shadow: 0 0 10px rgba(255,255,255,.3);
         }
 
         #progress {
@@ -216,6 +284,8 @@
             width: 0%;
             background: white;
             border-radius: 20px;
+            box-shadow: 0 0 10px white;
+            transition: width .15s linear;
         }
 
         #controls {
@@ -236,9 +306,12 @@
             color: #d85d91;
             font-size: 27px;
             font-weight: bold;
-            box-shadow: 0 8px 17px rgba(50,20,60,.2);
+            box-shadow:
+                0 8px 17px rgba(50,20,60,.2),
+                0 0 10px rgba(255,255,255,.3);
             touch-action: none;
             -webkit-tap-highlight-color: transparent;
+            transition: transform .15s ease, box-shadow .15s ease;
         }
 
         #left {
@@ -257,6 +330,7 @@
 
         .control:active {
             transform: scale(.92);
+            box-shadow: 0 4px 10px rgba(50,20,60,.2);
         }
 
         #exit {
@@ -267,6 +341,7 @@
             border-radius: 25px;
             background: rgba(255,255,255,.95);
             color: #d85d91;
+            box-shadow: 0 5px 15px rgba(50,20,60,.15);
         }
 
         #win {
@@ -277,14 +352,33 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: rgba(255,225,243,.97);
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,.98),
+                    rgba(255,225,243,.97)
+                );
             z-index: 100;
+            animation: winAppear .8s ease;
+        }
+
+        @keyframes winAppear {
+            from {
+                opacity: 0;
+                transform: scale(.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         #win h2 {
             color: #d85d91;
             font-size: 31px;
             margin: 10px;
+            text-shadow: 0 3px 10px rgba(216,93,145,.2);
         }
 
         #quote {
@@ -299,7 +393,9 @@
             width: 285px;
             max-width: 78vw;
             border-radius: 24px;
-            box-shadow: 0 18px 40px rgba(60,20,70,.25);
+            box-shadow:
+                0 18px 40px rgba(60,20,70,.25),
+                0 0 25px rgba(255,255,255,.7);
         }
 
         #winExit {
@@ -309,8 +405,10 @@
             border-radius: 25px;
             background: white;
             color: #d85d91;
+            box-shadow: 0 7px 18px rgba(50,20,60,.15);
         }
-              @media(max-width:600px) {
+
+        @media(max-width:600px) {
 
             h1 {
                 font-size: 26px;
@@ -340,7 +438,7 @@
 
 <body>
 
-<h1>The Obstacle Course!</h1>
+<h1>The Obstacle Course! ✨</h1>
 
 <div id="instructions">
     Hold ◀ or ▶ to move • Tap JUMP to jump • Don't fall! ✨
@@ -371,7 +469,6 @@
 
     <div id="world">
 
-        <!-- START -->
         <div class="ground"
              style="left:0;bottom:0;width:900px;"></div>
 
@@ -381,8 +478,6 @@
         <div class="platform"
              style="left:760px;bottom:205px;width:160px;"></div>
 
-
-        <!-- SECTION 2 -->
         <div class="ground"
              style="left:1000px;bottom:0;width:850px;"></div>
 
@@ -395,8 +490,6 @@
         <div class="platform"
              style="left:1700px;bottom:145px;width:170px;"></div>
 
-
-        <!-- SECTION 3 -->
         <div class="ground"
              style="left:1900px;bottom:0;width:700px;"></div>
 
@@ -409,8 +502,6 @@
         <div class="platform"
              style="left:2520px;bottom:150px;width:180px;"></div>
 
-
-        <!-- MOVING PLATFORM AREA -->
         <div class="platform"
              style="left:2750px;bottom:130px;width:170px;"></div>
 
@@ -428,8 +519,6 @@
         <div class="platform"
              style="left:3950px;bottom:150px;width:190px;"></div>
 
-
-        <!-- SECTION 5 -->
         <div class="ground"
              style="left:4200px;bottom:0;width:900px;"></div>
 
@@ -442,8 +531,6 @@
         <div class="platform"
              style="left:5000px;bottom:155px;width:190px;"></div>
 
-
-        <!-- SECTION 6 -->
         <div class="platform movingPlatform"
              id="moving3"
              style="left:5350px;bottom:190px;width:190px;"></div>
@@ -461,8 +548,6 @@
         <div class="platform"
              style="left:6500px;bottom:150px;width:190px;"></div>
 
-
-        <!-- SECTION 7 -->
         <div class="ground"
              style="left:6750px;bottom:0;width:850px;"></div>
 
@@ -475,8 +560,6 @@
         <div class="platform"
              style="left:7570px;bottom:160px;width:190px;"></div>
 
-
-        <!-- SECTION 8 -->
         <div class="platform"
              style="left:7850px;bottom:150px;width:190px;"></div>
 
@@ -489,8 +572,6 @@
         <div class="ground"
              style="left:8700px;bottom:0;width:650px;"></div>
 
-
-        <!-- FINAL SECTION -->
         <div class="platform"
              style="left:9000px;bottom:160px;width:190px;"></div>
 
@@ -506,15 +587,11 @@
         <div class="ground"
              style="left:10150px;bottom:0;width:750px;"></div>
 
-
-        <!-- LIGHT -->
         <div id="light"
              style="left:10700px;bottom:180px;">
             ✨
         </div>
 
-
-        <!-- DECORATION -->
         <div class="flower" style="left:300px;bottom:80px;">🌸</div>
         <div class="flower" style="left:700px;bottom:80px;">🌷</div>
         <div class="flower" style="left:1250px;bottom:80px;">🌸</div>
@@ -526,10 +603,7 @@
         <div class="flower" style="left:8800px;bottom:80px;">🌸</div>
         <div class="flower" style="left:10300px;bottom:80px;">🌷</div>
 
-
-        <!-- OBSTACLES -->
         <div class="fire" style="left:820px;bottom:80px;">🔥</div>
-
         <div class="fire" style="left:1330px;bottom:80px;">🔥</div>
 
         <div class="spikes" style="left:1570px;bottom:80px;">
@@ -543,7 +617,6 @@
         </div>
 
         <div class="fire" style="left:4550px;bottom:80px;">🔥</div>
-
         <div class="fire" style="left:5100px;bottom:80px;">🔥</div>
 
         <div class="spikes" style="left:7200px;bottom:80px;">
@@ -562,7 +635,6 @@
             🔺🔺
         </div>
 
-
         <img
             id="melody"
             src="melody.png"
@@ -572,7 +644,6 @@
 
     </div>
 </div>
-
 
 <div id="controls">
 
@@ -590,11 +661,9 @@
 
 </div>
 
-
 <button id="exit" onclick="goBack()">
     ← Exit Letter
 </button>
-
 
 <div id="win">
 
@@ -634,14 +703,23 @@ const leftButton = document.getElementById("left");
 const rightButton = document.getElementById("right");
 const jumpButton = document.getElementById("jump");
 
+
+/* =========================
+   PLAYER SETTINGS
+========================= */
+
 let playerX = 70;
 let playerY = 80;
 
 let velocityY = 0;
 
+/* Slightly faster than before */
 const gravity = 0.58;
 const jumpPower = 12.5;
-const speed = 2.2;
+const speed = 2.8;
+
+/* Gentle character bounce */
+let bounceTime = 0;
 
 let jumping = false;
 
@@ -678,6 +756,7 @@ function updateHearts() {
     }
 
     hearts.innerHTML = result;
+
 }
 
 
@@ -742,38 +821,51 @@ function updateMovingPlatforms() {
         platform.element.style.left =
             newX + "px";
 
-        /*
-         * If Melody is standing on this platform,
-         * move her together with it.
-         */
 
         const platformLeft = newX;
-        const platformRight =
-            newX + platform.element.offsetWidth;
 
-        const playerLeft = playerX + 18;
-        const playerRight = playerX + 88;
+        const platformRight =
+            newX +
+            platform.element.offsetWidth;
+
+
+        const playerLeft =
+            playerX + 18;
+
+        const playerRight =
+            playerX + 88;
+
 
         const platformTop =
             parseFloat(
                 window.getComputedStyle(
                     platform.element
                 ).bottom
-            ) + platform.element.offsetHeight;
+            ) +
+            platform.element.offsetHeight;
+
 
         const standingOnPlatform =
-            Math.abs(playerY - platformTop) < 3 &&
+            Math.abs(
+                playerY -
+                platformTop
+            ) < 4 &&
             playerRight > platformLeft &&
             playerLeft < platformRight &&
             !jumping;
 
+
         if (standingOnPlatform) {
 
-            playerX += newX - oldX;
+            playerX +=
+                newX -
+                oldX;
 
         }
 
-        platform.previousX = newX;
+
+        platform.previousX =
+            newX;
 
     });
 
@@ -788,11 +880,17 @@ function playerRect() {
 
     return {
 
-        left: playerX + 18,
-        right: playerX + 88,
+        left:
+            playerX + 18,
 
-        bottom: playerY,
-        top: playerY + 90
+        right:
+            playerX + 88,
+
+        bottom:
+            playerY,
+
+        top:
+            playerY + 90
 
     };
 
@@ -805,19 +903,26 @@ function playerRect() {
 
 function findPlatformBelow() {
 
-    const player = playerRect();
+    const player =
+        playerRect();
 
-    let highestPlatform = -Infinity;
+    let highestPlatform =
+        -Infinity;
+
 
     const platforms =
         document.querySelectorAll(
             ".platform, .ground"
         );
 
+
     platforms.forEach(platform => {
 
         const style =
-            window.getComputedStyle(platform);
+            window.getComputedStyle(
+                platform
+            );
+
 
         const left =
             parseFloat(style.left);
@@ -831,38 +936,42 @@ function findPlatformBelow() {
         const height =
             platform.offsetHeight;
 
+
         const right =
             left + width;
 
         const top =
             bottom + height;
 
+
         const overlap =
             player.right > left &&
             player.left < right;
+
 
         if (!overlap) {
             return;
         }
 
-        /*
-         * Only allow landing while falling.
-         */
 
         const distance =
-            player.bottom - top;
+            player.bottom -
+            top;
+
 
         if (
-            distance >= -18 &&
-            distance <= 25 &&
+            distance >= -10 &&
+            distance <= 20 &&
             top > highestPlatform
         ) {
 
-            highestPlatform = top;
+            highestPlatform =
+                top;
 
         }
 
     });
+
 
     return highestPlatform;
 
@@ -879,7 +988,8 @@ function jump() {
 
         jumping = true;
 
-        velocityY = jumpPower;
+        velocityY =
+            jumpPower;
 
     }
 
@@ -896,8 +1006,10 @@ function updatePhysics() {
 
     playerY += velocityY;
 
+
     const platform =
         findPlatformBelow();
+
 
     if (
         platform !== -Infinity &&
@@ -905,7 +1017,8 @@ function updatePhysics() {
         playerY <= platform
     ) {
 
-        playerY = platform;
+        playerY =
+            platform;
 
         velocityY = 0;
 
@@ -913,11 +1026,10 @@ function updatePhysics() {
 
     }
 
+
     /*
-     * VOID
-     *
-     * Once Melody falls below this point,
-     * immediately respawn her safely.
+     * Respawn if Melody
+     * falls into the void.
      */
 
     if (playerY < -220) {
@@ -936,16 +1048,25 @@ function updatePhysics() {
 function movePlayer() {
 
     if (movingLeft) {
+
         playerX -= speed;
+
     }
+
 
     if (movingRight) {
+
         playerX += speed;
+
     }
 
+
     if (playerX < 0) {
+
         playerX = 0;
+
     }
+
 
     if (
         playerX >
@@ -972,6 +1093,50 @@ function updatePlayer() {
     melody.style.bottom =
         playerY + "px";
 
+
+    /*
+     * Gentle floating/bouncing
+     * animation while walking.
+     */
+
+    if (!jumping && (movingLeft || movingRight)) {
+
+        bounceTime += 0.16;
+
+        const bounce =
+            Math.sin(bounceTime) * 3;
+
+        const squash =
+            1 +
+            Math.sin(bounceTime) * 0.025;
+
+        melody.style.transform =
+            "translateY(" +
+            (-bounce) +
+            "px) scale(" +
+            squash +
+            "," +
+            (2 - squash) +
+            ")";
+
+    } else {
+
+        /*
+         * Tiny idle bounce.
+         */
+
+        bounceTime += 0.045;
+
+        const bounce =
+            Math.sin(bounceTime) * 1.5;
+
+        melody.style.transform =
+            "translateY(" +
+            (-bounce) +
+            "px)";
+
+    }
+
 }
 
 
@@ -984,17 +1149,23 @@ function updateCamera() {
     const screenWidth =
         game.clientWidth;
 
+
     let targetCamera =
         playerX -
         screenWidth * 0.35;
 
+
     if (targetCamera < 0) {
+
         targetCamera = 0;
+
     }
+
 
     const maximumCamera =
         worldLength -
         screenWidth;
+
 
     if (
         targetCamera >
@@ -1006,11 +1177,13 @@ function updateCamera() {
 
     }
 
+
     cameraX +=
         (
             targetCamera -
             cameraX
         ) * 0.10;
+
 
     world.style.transform =
         "translateX(" +
@@ -1032,6 +1205,7 @@ function updateProgress() {
             (playerX / 10700) * 100
         );
 
+
     progress.style.width =
         percentage + "%";
 
@@ -1044,9 +1218,15 @@ function updateProgress() {
 
 function loseHeart() {
 
-    if (invincible || won) {
+    if (
+        invincible ||
+        won
+    ) {
+
         return;
+
     }
+
 
     invincible = true;
 
@@ -1054,23 +1234,15 @@ function loseHeart() {
 
     updateHearts();
 
-    /*
-     * IMPORTANT:
-     * Reset ALL falling/movement physics
-     * before placing Melody back on the ground.
-     */
 
     velocityY = 0;
 
     jumping = false;
 
     movingLeft = false;
+
     movingRight = false;
 
-    /*
-     * Respawn slightly before the dangerous
-     * section instead of exactly where she died.
-     */
 
     playerX =
         Math.max(
@@ -1078,23 +1250,20 @@ function loseHeart() {
             playerX - 250
         );
 
+
     playerY = 80;
 
-    /*
-     * Small delay so she cannot immediately
-     * fall again during the respawn.
-     */
 
     setTimeout(() => {
-
-        /*
-         * Find the ground/platform underneath.
-         */
 
         const safePlatform =
             findPlatformBelow();
 
-        if (safePlatform !== -Infinity) {
+
+        if (
+            safePlatform !==
+            -Infinity
+        ) {
 
             playerY =
                 safePlatform;
@@ -1104,6 +1273,7 @@ function loseHeart() {
             playerY = 80;
 
         }
+
 
         velocityY = 0;
 
@@ -1120,7 +1290,9 @@ function loseHeart() {
 
         updateHearts();
 
+
         playerX = 70;
+
         playerY = 80;
 
         velocityY = 0;
@@ -1138,34 +1310,46 @@ function loseHeart() {
 
 function checkObstacles() {
 
-    if (invincible || won) {
+    if (
+        invincible ||
+        won
+    ) {
+
         return;
+
     }
+
 
     const player =
         playerRect();
+
 
     const obstacles =
         document.querySelectorAll(
             ".fire, .spikes"
         );
 
+
     obstacles.forEach(obstacle => {
 
         const rect =
             obstacle.getBoundingClientRect();
 
+
         const gameRect =
             game.getBoundingClientRect();
+
 
         const obstacleLeft =
             rect.left -
             gameRect.left +
             cameraX;
 
+
         const obstacleRight =
             obstacleLeft +
             rect.width;
+
 
         const obstacleBottom =
             game.clientHeight -
@@ -1174,9 +1358,11 @@ function checkObstacles() {
                 gameRect.top
             );
 
+
         const obstacleTop =
             obstacleBottom +
             rect.height;
+
 
         const hit =
             player.right >
@@ -1187,6 +1373,7 @@ function checkObstacles() {
                 obstacleTop &&
             player.top >
                 obstacleBottom;
+
 
         if (hit) {
 
@@ -1206,20 +1393,20 @@ function checkObstacles() {
 function checkWin() {
 
     if (won) {
+
         return;
+
     }
 
-    /*
-     * Melody must actually reach
-     * the final light.
-     */
 
     if (playerX >= 10600) {
 
         won = true;
 
         movingLeft = false;
+
         movingRight = false;
+
 
         setTimeout(() => {
 
@@ -1237,50 +1424,78 @@ function checkWin() {
    BUTTON CONTROLS
 ========================= */
 
-function holdButton(button, direction) {
+function holdButton(
+    button,
+    direction
+) {
 
     const start = event => {
 
         event.preventDefault();
 
-        if (direction === "left") {
+
+        if (
+            direction === "left"
+        ) {
+
             movingLeft = true;
+
         }
 
-        if (direction === "right") {
+
+        if (
+            direction === "right"
+        ) {
+
             movingRight = true;
+
         }
 
     };
+
 
     const stop = event => {
 
         event.preventDefault();
 
-        if (direction === "left") {
+
+        if (
+            direction === "left"
+        ) {
+
             movingLeft = false;
+
         }
 
-        if (direction === "right") {
+
+        if (
+            direction === "right"
+        ) {
+
             movingRight = false;
+
         }
 
     };
+
 
     button.addEventListener(
         "pointerdown",
         start
     );
 
+
     button.addEventListener(
         "pointerup",
         stop
     );
 
+
     button.addEventListener(
         "pointercancel",
         stop
     );
+
 
     button.addEventListener(
         "pointerleave",
@@ -1290,9 +1505,21 @@ function holdButton(button, direction) {
 }
 
 
-holdButton(leftButton, "left");
-holdButton(rightButton, "right");
+holdButton(
+    leftButton,
+    "left"
+);
 
+
+holdButton(
+    rightButton,
+    "right"
+);
+
+
+/* =========================
+   JUMP BUTTON
+========================= */
 
 jumpButton.addEventListener(
     "pointerdown",
@@ -1323,6 +1550,7 @@ document.addEventListener(
 
         }
 
+
         if (
             event.key === "ArrowRight" ||
             event.key.toLowerCase() === "d"
@@ -1332,10 +1560,13 @@ document.addEventListener(
 
         }
 
+
         if (
             event.key === "ArrowUp" ||
             event.key === " "
         ) {
+
+            event.preventDefault();
 
             jump();
 
@@ -1357,6 +1588,7 @@ document.addEventListener(
             movingLeft = false;
 
         }
+
 
         if (
             event.key === "ArrowRight" ||
@@ -1408,6 +1640,7 @@ function gameLoop() {
         checkWin();
 
     }
+
 
     requestAnimationFrame(
         gameLoop
